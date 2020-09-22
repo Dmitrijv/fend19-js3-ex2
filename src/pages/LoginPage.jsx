@@ -15,9 +15,11 @@ export default function LoginPage() {
   const uid = params.get("uid");
   const token = params.get("token");
 
-  const { email, setEmail } = useContext(BusinessContext);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [accountActivationMsg, setAccountActivationMsg] = useState("");
+
+  const { userEmail, setUserEmail } = useContext(BusinessContext);
 
   function handleActivateAccount() {
     userKit.activateUser(uid, token).then(() => {
@@ -31,6 +33,7 @@ export default function LoginPage() {
       .login(email, password)
       .then(res => res.json())
       .then(data => {
+        setUserEmail(email);
         userKit.setToken(data.token);
         history.push("/home");
       });
@@ -41,26 +44,30 @@ export default function LoginPage() {
     <GlobalLayout>
       {/* Only show that account is beeing activated if uid and token exists in URL */}
       {uid && token && (
-        <div>
-          <p>Your account is being activated</p>
-          {handleActivateAccount()}
+        <div className="centered-container">
+          <div className="white-card">
+            <p>Your account is being activated</p>
+            {handleActivateAccount()}
+          </div>
         </div>
       )}
       {/* If uid and token doesn't exist in url, render login form */}
       {!uid && !token && (
-        <div>
-          <p>{accountActivationMsg && accountActivationMsg} Please Login</p>
-          <form onSubmit={handleLogin}>
-            <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-            <input
-              placeholder="password"
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-            />
-            <button type="submit">Login</button>
-          </form>
+        <div className="centered-container">
+          <div className="white-card">
+            <p>{accountActivationMsg && accountActivationMsg} Please Login</p>
+            <form onSubmit={handleLogin}>
+              <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+              <input
+                placeholder="password"
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                required
+              />
+              <button type="submit">Login</button>
+            </form>
+          </div>
         </div>
       )}
     </GlobalLayout>

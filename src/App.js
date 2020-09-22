@@ -9,10 +9,10 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 
 function App() {
-  const [email, setEmail] = useState("");
+  const [userEmail, setUserEmail] = useState(null);
   return (
     <div>
-      <BusinessContext.Provider value={{ email, setEmail }}>
+      <BusinessContext.Provider value={{ userEmail, setUserEmail }}>
         <Switch>
           <Route path="/home" exact component={HomePage} />
           <Route path="/login" exact component={LoginPage} />

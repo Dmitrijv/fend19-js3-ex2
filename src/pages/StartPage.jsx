@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
-import UserKit from "./../data/UserKit";
 import RegisterForm from "./../components/RegisterForm";
 import GlobalLayout from "./layout/GlobalLayout";
 
+import { BusinessContext } from "./../contexts/BusinessContext";
+
 export default function Start() {
   const history = useHistory();
-  const userKit = new UserKit();
+  const { userEmail } = useContext(BusinessContext);
 
   // redirect to home page if we are already logged in
-  if (userKit.getToken()) history.push("/home");
+  if (userEmail) {
+    history.push("/home");
+  }
 
   return (
     <GlobalLayout>
