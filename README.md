@@ -28,7 +28,7 @@ API Docs: https://frebi.willandskill.eu/swagger/
 Admin panel: https://frebi.willandskill.eu/admin/  
 ROOT_URL: https://frebi.willandskill.eu/
 
-## Dokumentation:
+## Dokumentation
 
 ### 1 Skapa en ny användare
 
