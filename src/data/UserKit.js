@@ -41,8 +41,7 @@ export default class {
   }
 
   async getCustomerList() {
-    const url = `${API_URL}customers`;
-    //console.log(url);
+    const url = `${API_URL}customers/`;
     //console.log(this.getPrivateHeaders());
     return fetch(url, {
       headers: this.getPrivateHeaders()
