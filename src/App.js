@@ -38,6 +38,10 @@ function App() {
       });
   }
 
+  function redirectIfLoggedIn() {
+    if (userKit.getToken()) history.push("/home");
+  }
+
   function handleCreateCustomer() {
     const payload = {
       name: "My first client"
@@ -82,6 +86,7 @@ function App() {
           )}
         </Route>
         <Route path="/">
+          {redirectIfLoggedIn()}
           <h2>Register New User</h2>
           <RegisterForm />
         </Route>
