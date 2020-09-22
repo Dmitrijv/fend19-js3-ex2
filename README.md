@@ -10,21 +10,21 @@ så att alla får samma information.
 Alla punkter (förutom de som börjar på "VG") nedan ska utföras i projektet för
 betyget Godkänt. För VG ska minst 2 utav VG-punkterna utföras.
 
+Krav:
+
+- React
+- JSXK
+- React Router Dom
+- useState
+- useEffect
+- !!! VG useContext (spara kundlistan och inloggade användarens information i Context)
+- Styled Components
+- Skapa styled components
+- !!! VG Ärv CSS-properties från andra komponenter
+
 ## API
 
-ROOT_URL: "https://frebi.willandskill.eu/admin"
-
-Krav:
-React
-JSXK
-React Router Dom
-useState
-useEffect
-!VG useContext (spara kundlistan och inloggade användarens information i
-Context)
-Styled Components
-Skapa styled components
-!VG Ärv CSS-properties från andra komponenter
+ROOT_URL: https://frebi.willandskill.eu/admin
 
 ## Dokumentation:
 
