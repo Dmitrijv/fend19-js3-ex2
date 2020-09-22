@@ -10,7 +10,7 @@ så att alla får samma information.
 Alla punkter (förutom de som börjar på "VG") nedan ska utföras i projektet för
 betyget Godkänt. För VG ska minst 2 utav VG-punkterna utföras.
 
-Krav:
+**Krav:**
 
 - React
 - JSXK
@@ -24,20 +24,20 @@ Krav:
 
 ## API
 
-API Docs: https://frebi.willandskill.eu/swagger/
-Admin panel: https://frebi.willandskill.eu/admin/
+API Docs: https://frebi.willandskill.eu/swagger/  
+Admin panel: https://frebi.willandskill.eu/admin/  
 ROOT_URL: https://frebi.willandskill.eu/
 
 ## Dokumentation:
 
 ### 1 Skapa en ny användare
 
-auth_user_create
+auth_user_create  
 /auth/users/
 
-Logga in som admin på https://frebi.willandskill.eu/
-email: nackademin@willandskill.se
-password: js-fend-19
+Logga in som admin på https://frebi.willandskill.eu/  
+email: nackademin@willandskill.se  
+password: js-fend-19  
 Navigera till: https://frebi.willandskill.eu/swagger/
 
 När användaren har skapats så skickas ett mail till användarens email adress.
@@ -45,16 +45,16 @@ Se till att skapa användare med ert riktiga email. Man kan bara skapa en
 användare med ett visst email. Har ni Gmail så går det att lägga till +VAD_SOM_HELST för att skapa unika mail.
 Till exempel:
 
-- mian@willandskill.se
-- mian+test@willandskill.se
-- mian+test+1@willandskill.se
+mian@willandskill.se  
+mian+test@willandskill.se  
+mian+test+1@willandskill.se
 
 Alla dessa mail hamnar i min inkorg. Jag är osäker på ifall er nackademin mail har denna funktion.
 
-Aktivera användaren
+**Aktivera användaren**
 
 I mailet som ni får från systemet så finns det en länk som ser ut som nedan
-http://localhost:3000/login?uid=NzI&token=5jz-8e37ac1f5dccf7b30a0f
+http://localhost:3000/login?uid=NzI&token=5jz-8e37ac1f5dccf7b30a0f  
 Denna länk innehåller en uid och en token som query parametrar.
 Använd useHistory för att hitta uid och token. Använd även URLSearchParams för att lättare hantera url.
 
@@ -65,7 +65,7 @@ uid och token parameter). Här visar vi upp input fält för email och användar
 samt en knapp för att logga in. När användaren trycker på knappen så skickar
 vi ett anrop till /api-token-auth/ med email och password. Då får vi tillbaka en token
 
-Hemskärmen
+**Hemskärmen**
 
 När användaren har logga in navigerar vi vidare till /home
 
@@ -83,8 +83,8 @@ Användaren ska kunna ange följande värden för att skapa en kund:
 - email (kundens mail)
 - phoneNumber (kundens telefonnummer)
 
-När användaren har skapat kunden ska kundlistan laddas om från back-end
-Visa vilken användare som är inloggad ( api/v1/me )
+När användaren har skapat kunden ska kundlistan laddas om från back-end  
+Visa vilken användare som är inloggad ( api/v1/me )  
 Visa den inloggade användarens email, förnamn och efternamn.
 
 ### 3 Detaljvy för en specifik kund
@@ -100,12 +100,12 @@ Visa följande information på Detaljvy för en specifik kund:
 - email
 - phoneNumber
 
-:trophy: VG Lägg till en knapp så att användaren kan ta bort en kund (HTTP Method Delete på /api/v1/customers/{id}/ ).
-Användaren ska därefter navigera tillbaka till "Hemskärmen"
+:trophy: VG Lägg till en knapp så att användaren kan ta bort en kund (HTTP Method Delete på /api/v1/customers/{id}/ ).  
+Användaren ska därefter navigera tillbaka till "Hemskärmen"  
 :trophy: VG Ge användaren möjlighet att ändra kundens information PUT/PATCH
 
 ### Inlämning
 
-Uppgiften lämnas in genom att ladda upp koden (utan node_modules) på
-studentportalen samt i inlämningen klistra in länk till publikt GitHub repo,
+Uppgiften lämnas in genom att ladda upp koden (utan node_modules) på  
+studentportalen samt i inlämningen klistra in länk till publikt GitHub repo,  
 senast 28/9 2020 23:59
