@@ -1,12 +1,3 @@
-## Dependencies
-
-1. react-router-dom
-2. styled-component
-
-## API
-
-ROOT_URL: "https://frebi.willandskill.eu/admin"
-
 # Inlämingsuppgift 2
 
 Uppgiften går ut på att skapa ett projekt för småföretag, så att de kan hålla
@@ -18,6 +9,10 @@ själva. Frågor gällande uppgiften skall ställas i Slack-kanelen för utbildn
 så att alla får samma information.
 Alla punkter (förutom de som börjar på "VG") nedan ska utföras i projektet för
 betyget Godkänt. För VG ska minst 2 utav VG-punkterna utföras.
+
+## API
+
+ROOT_URL: "https://frebi.willandskill.eu/admin"
 
 Krav:
 React
