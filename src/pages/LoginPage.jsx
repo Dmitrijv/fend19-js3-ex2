@@ -49,9 +49,17 @@ export default function LoginPage() {
       {!uid && !token && (
         <div>
           <p>{accountActivationMsg && accountActivationMsg} Please Login</p>
-          <input placeholder="email" value={email} onChange={e => setEmail(e.target.value)} />
-          <input placeholder="password" value={password} onChange={e => setPassword(e.target.value)} />
-          <button onClick={handleLogin}>Login</button>
+          <form onSubmit={handleLogin}>
+            <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+            <input
+              placeholder="password"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit">Login</button>
+          </form>
         </div>
       )}
     </GlobalLayout>
