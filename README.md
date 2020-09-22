@@ -106,6 +106,7 @@ Användaren ska därefter navigera tillbaka till "Hemskärmen"
 
 ### Inlämning
 
-Uppgiften lämnas in genom att ladda upp koden (utan node_modules) på  
-studentportalen samt i inlämningen klistra in länk till publikt GitHub repo,  
-senast 28/9 2020 23:59
+Uppgiften lämnas in genom att ladda upp koden (utan node_modules) på studentportalen samt i inlämningen klistra in länk
+till publikt GitHub repo.
+
+Senast 28/9 2020 23:59.
