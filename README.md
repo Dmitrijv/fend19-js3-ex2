@@ -17,10 +17,10 @@ Krav:
 - React Router Dom
 - useState
 - useEffect
-- !!! VG useContext (spara kundlistan och inloggade användarens information i Context)
+- :trophy: VG useContext (spara kundlistan och inloggade användarens information i Context)
 - Styled Components
 - Skapa styled components
-- !!! VG Ärv CSS-properties från andra komponenter
+- :trophy: VG Ärv CSS-properties från andra komponenter
 
 ## API
 
@@ -40,49 +40,48 @@ Navigera till: https://frebi.willandskill.eu/swagger/
 
 När användaren har skapats så skickas ett mail till användarens email adress.
 Se till att skapa användare med ert riktiga email. Man kan bara skapa en
-användare med ett visst email. Har ni Gmail så går det att lägga till
-VAD_SOM_HELST för att skapa unika mail. Till exempel:
-mian@willandskill.se
-mian+test@willandskill.se
-mian+test+1@willandskill.se
-Alla dessa mail hamnar i min inkorg. Jag är osäker på ifall er nackademin mail
-har denna funktion.
+användare med ett visst email. Har ni Gmail så går det att lägga till +VAD_SOM_HELST för att skapa unika mail. Till exempel:
+
+- mian@willandskill.se
+- mian+test@willandskill.se
+- mian+test+1@willandskill.se
+
+Alla dessa mail hamnar i min inkorg. Jag är osäker på ifall er nackademin mail har denna funktion.
 
 Aktivera användaren
+
 I mailet som ni får från systemet så finns det en länk som ser ut som nedan
 http://localhost:3000/login?uid=NzI&token=5jz-8e37ac1f5dccf7b30a0f
 Denna länk innehåller en uid och en token som query parametrar.
-Använd useHistory för att hitta uid och token. Använd även URLSearchParams
-för att lättare hantera url.
+Använd useHistory för att hitta uid och token. Använd även URLSearchParams för att lättare hantera url.
 
 ### 2 Logga in användaren
 
 När användaren har aktiverat sitt konto så navigerar vi vidare till /login (utan
 uid och token parameter). Här visar vi upp input fält för email och användare
 samt en knapp för att logga in. När användaren trycker på knappen så skickar
-vi ett anrop till /api-token-auth/ med email och password. Då får vi tillbaka en
-token
+vi ett anrop till /api-token-auth/ med email och password. Då får vi tillbaka en token
 
 Hemskärmen
-När användaren har logga in navigerar vi vidare till
 
-/home
+När användaren har logga in navigerar vi vidare till /home
 
 Lista alla kunder som användaren har kopplat till sitt konto ( GET /api/v1/customers/)
 Ge användaren möjlighet att lägga till en ny kund ( POST /api/v1/customers/ )
 
 Användaren ska kunna ange följande värden för att skapa en kund:
 
-name (kundens namn)
-organisationNr (kundens organisationsnummer)
-vatNr (kundens momsnummer)
+- name (kundens namn)
+- organisationNr (kundens organisationsnummer)
+- vatNr (kundens momsnummer)
 
-! VG Validera så att detta fält innehåller "SE" och därefter 10 siffror
-reference (kundens referens)
-paymentTerm (betalningsvillkor i dagar. En siffra måste alltid skickas med)
-website (kundens hemsida)
-email (kundens mail)
-phoneNumber (kundens telefonnummer)
+:trophy: VG Validera så att detta fält innehåller "SE" och därefter 10 siffror
+
+- reference (kundens referens)
+- paymentTerm (betalningsvillkor i dagar. En siffra måste alltid skickas med)
+- website (kundens hemsida)
+- email (kundens mail)
+- phoneNumber (kundens telefonnummer)
 
 När användaren har skapat kunden ska kundlistan laddas om från back-end
 Visa vilken användare som är inloggad ( api/v1/me )
@@ -100,9 +99,9 @@ website,
 email,
 phoneNumber
 
-!VG Lägg till en knapp så att användaren kan ta bort en kund HTTP
+:trophy: VG Lägg till en knapp så att användaren kan ta bort en kund HTTP
 Method Delete på /api/v1/customers/{id}/ ). Användaren ska därefter navigera tillbaka till "Hemskärmen"
-!VG Ge användaren möjlighet att ändra kundens information PUT/PATCH
+:trophy: VG Ge användaren möjlighet att ändra kundens information PUT/PATCH
 
 ### Inlämning
 
