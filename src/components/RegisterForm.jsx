@@ -52,7 +52,6 @@ const RegisterForm = () => {
     ["Email", email, setEmail],
     ["Password", password, setPassword],
     ["Organisation Name", organisationName, setOrganisationName]
-    // ["Organisation Kind", organisationKind, setOrganisationKind]
   ];
 
   const organisationKinds = [
