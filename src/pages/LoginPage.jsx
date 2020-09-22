@@ -26,7 +26,7 @@ export default function LoginPage() {
     });
   }
 
-  function handleLogin() {
+  function handleLogin(event) {
     userKit
       .login(email, password)
       .then(res => res.json())
@@ -34,6 +34,7 @@ export default function LoginPage() {
         userKit.setToken(data.token);
         history.push("/home");
       });
+    event.preventDefault();
   }
 
   return (
