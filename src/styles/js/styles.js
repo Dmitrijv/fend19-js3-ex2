@@ -9,9 +9,8 @@ const FormContainer = styled.div`
   text-align: left;
   margin: auto;
   button {
-    padding: 0.5rem 1rem;
     display: block;
-    margin: 1.5rem auto;
+    margin: 1rem auto;
     font-size: 1rem;
   }
 `;
@@ -26,8 +25,6 @@ const InputContainer = styled.div`
     margin-right: 1rem;
   }
   input {
-    padding: 3px;
-    height: 1.3rem;
     font-size: 1rem;
     width: 200px;
   }

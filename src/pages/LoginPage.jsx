@@ -1,10 +1,21 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-
+import styled from "styled-components";
 import { BusinessContext } from "./../contexts/BusinessContext";
-
+import styles from "./../styles/js/styles";
 import UserKit from "./../data/UserKit";
 import GlobalLayout from "./layout/GlobalLayout";
+
+const FlexForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+  *:not(:last-child) {
+    margin-bottom: 10px;
+  }
+`;
 
 export default function LoginPage() {
   const userKit = new UserKit();
@@ -19,16 +30,17 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [accountActivationMsg, setAccountActivationMsg] = useState("");
 
-  const { userEmail, setUserEmail } = useContext(BusinessContext);
+  const { setUserEmail } = useContext(BusinessContext);
 
   function handleActivateAccount() {
     userKit.activateUser(uid, token).then(() => {
-      setAccountActivationMsg("Account activated!");
+      setAccountActivationMsg("Activated!");
       history.push("/login");
     });
   }
 
   function handleLogin(event) {
+    console.log("handle login");
     userKit
       .login(email, password)
       .then(res => res.json())
@@ -55,8 +67,8 @@ export default function LoginPage() {
       {!uid && !token && (
         <div className="centered-container">
           <div className="white-card">
-            <p>{accountActivationMsg && accountActivationMsg} Please Login</p>
-            <form onSubmit={handleLogin}>
+            <FlexForm onSubmit={handleLogin}>
+              <h2>{accountActivationMsg && accountActivationMsg} Please Login</h2>
               <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
               <input
                 placeholder="password"
@@ -66,7 +78,7 @@ export default function LoginPage() {
                 required
               />
               <button type="submit">Login</button>
-            </form>
+            </FlexForm>
           </div>
         </div>
       )}
