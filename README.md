@@ -24,7 +24,9 @@ Krav:
 
 ## API
 
-ROOT_URL: https://frebi.willandskill.eu/admin
+API Docs: https://frebi.willandskill.eu/swagger/
+Admin panel: https://frebi.willandskill.eu/admin/
+ROOT_URL: https://frebi.willandskill.eu/
 
 ## Dokumentation:
 
@@ -40,7 +42,8 @@ Navigera till: https://frebi.willandskill.eu/swagger/
 
 När användaren har skapats så skickas ett mail till användarens email adress.
 Se till att skapa användare med ert riktiga email. Man kan bara skapa en
-användare med ett visst email. Har ni Gmail så går det att lägga till +VAD_SOM_HELST för att skapa unika mail. Till exempel:
+användare med ett visst email. Har ni Gmail så går det att lägga till +VAD_SOM_HELST för att skapa unika mail.
+Till exempel:
 
 - mian@willandskill.se
 - mian+test@willandskill.se
@@ -73,10 +76,7 @@ Användaren ska kunna ange följande värden för att skapa en kund:
 
 - name (kundens namn)
 - organisationNr (kundens organisationsnummer)
-- vatNr (kundens momsnummer)
-
-:trophy: VG Validera så att detta fält innehåller "SE" och därefter 10 siffror
-
+- vatNr (kundens momsnummer) :trophy: VG Validera så att detta fält innehåller "SE" och därefter 10 siffror
 - reference (kundens referens)
 - paymentTerm (betalningsvillkor i dagar. En siffra måste alltid skickas med)
 - website (kundens hemsida)
@@ -89,19 +89,20 @@ Visa den inloggade användarens email, förnamn och efternamn.
 
 ### 3 Detaljvy för en specifik kund
 
-Visa följande information på Detaljvy för en specifik kund
-name,
-organisationNr,
-vatNr,
-reference,
-paymentTerm,
-website,
-email,
-phoneNumber
+Visa följande information på Detaljvy för en specifik kund:
 
-:trophy: VG Lägg till en knapp så att användaren kan ta bort en kund HTTP
-Method Delete på /api/v1/customers/{id}/ ). Användaren ska därefter navigera tillbaka till "Hemskärmen"
-:trophy: VG Ge användaren möjlighet att ändra kundens information PUT/PATCH
+- name
+- organisationNr
+- vatNr
+- reference
+- paymentTerm
+- website
+- email
+- phoneNumber
+
+:trophy: VG Lägg till en knapp så att användaren kan ta bort en kund (HTTP Method Delete på /api/v1/customers/{id}/ ).
+Användaren ska därefter navigera tillbaka till "Hemskärmen"
+:trophy: VG Ge användaren möjlighet att ändra kundens information PUT/PATCH
 
 ### Inlämning
 
