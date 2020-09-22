@@ -13,11 +13,12 @@ export default function Start() {
 
   return (
     <GlobalLayout>
-      <h2>Register New User</h2>
-      <p>
-        Already registered? <Link to={`/login`}>Log in here.</Link>
-      </p>
-      <RegisterForm />
+      <div className="centered-container">
+        <RegisterForm />
+        <p className="white-card text-center">
+          Already registered? <Link to={`/login`}>Log in here.</Link>
+        </p>
+      </div>
     </GlobalLayout>
   );
 }

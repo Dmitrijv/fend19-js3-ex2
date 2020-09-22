@@ -11,7 +11,6 @@ const FlexContainer = styled.div`
 const FormContainer = styled.div`
   text-align: left;
   margin: auto;
-
   button {
     padding: 0.5rem 1rem;
     display: block;
@@ -21,9 +20,10 @@ const FormContainer = styled.div`
 `;
 
 const InputContainer = styled.div`
-  margin: 0.5rem 0;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  margin: 0.5rem 0;
   font-size: 1.2rem;
   label {
     margin-right: 1rem;
@@ -73,8 +73,8 @@ const RegisterForm = () => {
     return (
       <InputContainer key={index}>
         <label htmlFor={placeholder}>{placeholder}:</label>
-        <select id={placeholder} name={placeholder} onChange={e => setValue(e.target.value)}>
-          {optionList.map(([id, label], index) => {
+        <select id={placeholder} name={placeholder} defaultValue={0} onChange={e => setValue(e.target.value)} required>
+          {optionList.map(([id, label]) => {
             return <DropdownOption key={`dropdown-key-${id}`} orgId={id} orgLabel={label} />;
           })}
         </select>
@@ -82,18 +82,22 @@ const RegisterForm = () => {
     );
   }
 
-  function handleRegister() {
+  function handleRegister(event) {
     userKit.register(firstName, lastName, email, password, organisationName, organisationKind);
+    event.preventDefault();
   }
 
   return (
-    <FlexContainer>
+    <FlexContainer className="white-card">
       <FormContainer>
-        {inputItemsArray.map(([placeholder, value, setValue], index) =>
-          renderInput(index, placeholder, value, setValue)
-        )}
-        {renderDropdownInput(inputItemsArray.length + 1, "Organisation Kind", organisationKinds, setOrganisationKind)}
-        <button onClick={handleRegister}>Register</button>
+        <h2>Register New User</h2>
+        <form onSubmit={handleRegister}>
+          {inputItemsArray.map(([placeholder, value, setValue], index) =>
+            renderInput(index, placeholder, value, setValue)
+          )}
+          {renderDropdownInput(inputItemsArray.length + 1, "Organisation Kind", organisationKinds, setOrganisationKind)}
+          <button type="submit">Register</button>
+        </form>
       </FormContainer>
     </FlexContainer>
   );
