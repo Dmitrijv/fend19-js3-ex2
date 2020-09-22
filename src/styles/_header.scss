@@ -1,0 +1,26 @@
+div.header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0; /* required */
+  background-color: #222c34;
+  margin-bottom: 20px;
+  z-index: 2;
+  padding: 10px 0px;
+  color: white;
+
+  div.centered-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      padding: 10px;
+      color: white;
+    }
+
+    a:visited,
+    a:link {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
