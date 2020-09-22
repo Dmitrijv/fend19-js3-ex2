@@ -36,8 +36,8 @@ auth_user_create
 /auth/users/
 
 Logga in som admin på https://frebi.willandskill.eu/  
-email: nackademin@willandskill.se  
-password: js-fend-19  
+email: ....
+password: ....
 Navigera till: https://frebi.willandskill.eu/swagger/
 
 När användaren har skapats så skickas ett mail till användarens email adress.
