@@ -33,10 +33,10 @@ const InputContainer = styled.div`
   }
 `;
 
-const styles = StyleSheet.create({
+const styles = {
   FlexContainer: FlexContainer,
   FormContainer: FormContainer,
   InputContainer: InputContainer
-});
+};
 
 export default styles;

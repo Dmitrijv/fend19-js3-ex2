@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import UserKit from "../data/UserKit";
 import DropdownOption from "./DropdownOption";
 
-import { styles } from "./../styles/js/styles";
+import styles from "./../styles/js/styles";
 
 const userKit = new UserKit();
 
