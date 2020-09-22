@@ -1,40 +1,8 @@
 import React, { useState } from "react";
 import UserKit from "../data/UserKit";
-import styled from "styled-components";
 import DropdownOption from "./DropdownOption";
 
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const FormContainer = styled.div`
-  text-align: left;
-  margin: auto;
-  button {
-    padding: 0.5rem 1rem;
-    display: block;
-    margin: 1.5rem auto;
-    font-size: 1rem;
-  }
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
-  label {
-    margin-right: 1rem;
-  }
-  input {
-    padding: 3px;
-    height: 1.3rem;
-    font-size: 1rem;
-    width: 200px;
-  }
-`;
+import { styles } from "./../styles/js/styles";
 
 const userKit = new UserKit();
 
@@ -62,23 +30,23 @@ const RegisterForm = () => {
 
   function renderInput(index, placeholder, value, setValue) {
     return (
-      <InputContainer key={index}>
+      <styles.InputContainer key={index}>
         <label htmlFor={placeholder}>{placeholder}:</label>
         <input placeholder={placeholder} id={placeholder} value={value} onChange={e => setValue(e.target.value)} />
-      </InputContainer>
+      </styles.InputContainer>
     );
   }
 
   function renderDropdownInput(index, placeholder, optionList, setValue) {
     return (
-      <InputContainer key={index}>
+      <styles.InputContainer key={index}>
         <label htmlFor={placeholder}>{placeholder}:</label>
         <select id={placeholder} name={placeholder} defaultValue={0} onChange={e => setValue(e.target.value)} required>
           {optionList.map(([id, label]) => {
             return <DropdownOption key={`dropdown-key-${id}`} orgId={id} orgLabel={label} />;
           })}
         </select>
-      </InputContainer>
+      </styles.InputContainer>
     );
   }
 
@@ -88,8 +56,8 @@ const RegisterForm = () => {
   }
 
   return (
-    <FlexContainer className="white-card">
-      <FormContainer>
+    <styles.FlexContainer className="white-card">
+      <styles.FormContainer>
         <h2>Register New User</h2>
         <form onSubmit={handleRegister}>
           {inputItemsArray.map(([placeholder, value, setValue], index) =>
@@ -98,8 +66,8 @@ const RegisterForm = () => {
           {renderDropdownInput(inputItemsArray.length + 1, "Organisation Kind", organisationKinds, setOrganisationKind)}
           <button type="submit">Register</button>
         </form>
-      </FormContainer>
-    </FlexContainer>
+      </styles.FormContainer>
+    </styles.FlexContainer>
   );
 };
 
