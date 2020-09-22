@@ -53,9 +53,9 @@ Alla dessa mail hamnar i min inkorg. Jag är osäker på ifall er nackademin mai
 
 **Aktivera användaren**
 
-I mailet som ni får från systemet så finns det en länk som ser ut som nedan
+I mailet som ni får från systemet så finns det en länk som ser ut som nedan  
 http://localhost:3000/login?uid=NzI&token=5jz-8e37ac1f5dccf7b30a0f  
-Denna länk innehåller en uid och en token som query parametrar.
+Denna länk innehåller en uid och en token som query parametrar.  
 Använd useHistory för att hitta uid och token. Använd även URLSearchParams för att lättare hantera url.
 
 ### 2 Logga in användaren
