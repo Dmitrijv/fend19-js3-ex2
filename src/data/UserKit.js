@@ -40,9 +40,16 @@ export default class {
     });
   }
 
+  async getActiveUser() {
+    const url = `${ROOT_URL}api/v1/me`;
+    return fetch(url, {
+      method: "GET",
+      headers: this.getPrivateHeaders()
+    });
+  }
+
   async getCustomerList() {
     const url = `${API_URL}customers/`;
-    //console.log(this.getPrivateHeaders());
     return fetch(url, {
       headers: this.getPrivateHeaders()
     });
@@ -54,6 +61,14 @@ export default class {
       method: "POST",
       headers: this.getPrivateHeaders(),
       body: JSON.stringify(payload)
+    });
+  }
+
+  async deleteCustomer(id) {
+    const url = `${ROOT_URL}api/v1/customers/${id}/ `;
+    return fetch(url, {
+      method: "DELETE",
+      headers: this.getPrivateHeaders()
     });
   }
 

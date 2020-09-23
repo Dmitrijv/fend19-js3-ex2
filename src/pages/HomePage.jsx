@@ -1,44 +1,60 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
 import UserKit from "./../data/UserKit";
+import { BusinessContext } from "./../contexts/BusinessContext";
+
 import GlobalLayout from "./layout/GlobalLayout";
+import ActiveUserSheet from "../components/ActiveUserSheet";
+import CustomerTable from "../components/customer/CustomerTable";
+import CreateCustomerForm from "../components/customer/CreateCustomerForm";
+
+const CustomerInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: 800px) {
+    flex-direction: row;
+    align-items: flex-start;
+    *:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+`;
 
 export default function HomePage() {
   const userKit = new UserKit();
+  const history = useHistory();
 
-  const [customerList, setCustomerList] = useState([]);
+  const { activeUser, customerList, setCustomerList } = useContext(BusinessContext);
 
-  function fetchClients() {
+  useEffect(() => {
+    console.log("hello there");
     userKit
       .getCustomerList()
       .then(res => res.json())
       .then(data => {
         setCustomerList(data.results);
       });
-  }
+  }, []);
 
-  function handleCreateCustomer() {
-    const payload = {
-      name: "My first client"
-    };
-    userKit
-      .createCustomer(payload)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        fetchClients();
-      });
-  }
+  useEffect(() => {
+    userKit.getActiveUser().then(response => {
+      if (response.status === 401) history.push("/");
+    });
+  }, []);
 
   return (
     <GlobalLayout>
-      <h1>Welcome to Business Application</h1>
-      <button onClick={fetchClients}>Get my Clients</button>
-      {customerList.map(customerItem => {
-        console.log(customerList);
-        return <p>{customerItem.name}</p>;
-      })}
-      <button onClick={handleCreateCustomer}>Create test customer</button>
+      <div className="centered-container">
+        <div className="white-card">
+          {activeUser && <ActiveUserSheet activeUser={activeUser} />}
+          <CustomerInfoWrapper>
+            <CreateCustomerForm />
+            {customerList && <CustomerTable customerList={customerList} />}
+          </CustomerInfoWrapper>
+        </div>
+      </div>
     </GlobalLayout>
   );
 }
