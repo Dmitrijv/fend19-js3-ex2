@@ -52,8 +52,10 @@ export default function LoginPage() {
       .login(email, password)
       .then(res => res.json())
       .then(data => {
-        updateActiveUser();
         userKit.setToken(data.token);
+        updateActiveUser();
+      })
+      .then(() => {
         history.push("/home");
       });
     event.preventDefault();
