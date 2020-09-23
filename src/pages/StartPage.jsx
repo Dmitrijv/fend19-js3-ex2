@@ -19,7 +19,7 @@ export default function Start() {
       <div className="centered-container">
         <RegisterForm />
         <p className="white-card text-center">
-          Already registered? <Link to={`/login`}>Log in here.</Link>
+          Already registered? <Link to={`/login`}>Sign in here.</Link>
         </p>
       </div>
     </GlobalLayout>

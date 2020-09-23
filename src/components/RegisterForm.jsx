@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import UserKit from "../data/UserKit";
 import DropdownOption from "./DropdownOption";
 
 import styles from "./../styles/js/styles";
 
-const userKit = new UserKit();
-
 const RegisterForm = () => {
+  const userKit = new UserKit();
+  const history = useHistory();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -52,6 +54,7 @@ const RegisterForm = () => {
 
   function handleRegister(event) {
     userKit.register(firstName, lastName, email, password, organisationName, organisationKind);
+    history.push("/verify");
     event.preventDefault();
   }
 

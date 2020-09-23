@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+
+import UserKit from "./../data/UserKit";
 import { BusinessContext } from "./../contexts/BusinessContext";
 import styles from "./../styles/js/styles";
-import UserKit from "./../data/UserKit";
+
 import GlobalLayout from "./layout/GlobalLayout";
 
 const FlexForm = styled.form`
@@ -26,26 +28,31 @@ export default function LoginPage() {
   const uid = params.get("uid");
   const token = params.get("token");
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [accountActivationMsg, setAccountActivationMsg] = useState("");
-
-  const { setUserEmail } = useContext(BusinessContext);
-
   function handleActivateAccount() {
     userKit.activateUser(uid, token).then(() => {
-      setAccountActivationMsg("Activated!");
-      history.push("/login");
+      history.push("/active");
     });
   }
 
+  if (uid && token) handleActivateAccount();
+
+  const { setActiveUser } = useContext(BusinessContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function updateActiveUser() {
+    userKit
+      .getActiveUser()
+      .then(res => res.json())
+      .then(({ email, firstName, lastName }) => setActiveUser({ email, firstName, lastName }));
+  }
+
   function handleLogin(event) {
-    console.log("handle login");
     userKit
       .login(email, password)
       .then(res => res.json())
       .then(data => {
-        setUserEmail(email);
+        updateActiveUser();
         userKit.setToken(data.token);
         history.push("/home");
       });
@@ -54,21 +61,12 @@ export default function LoginPage() {
 
   return (
     <GlobalLayout>
-      {/* Only show that account is beeing activated if uid and token exists in URL */}
-      {uid && token && (
-        <div className="centered-container">
-          <div className="white-card">
-            <p>Your account is being activated</p>
-            {handleActivateAccount()}
-          </div>
-        </div>
-      )}
       {/* If uid and token doesn't exist in url, render login form */}
       {!uid && !token && (
         <div className="centered-container">
           <div className="white-card">
             <FlexForm onSubmit={handleLogin}>
-              <h2>{accountActivationMsg && accountActivationMsg} Sign In</h2>
+              <h2>Sign In</h2>
               <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
               <input
                 placeholder="password"
