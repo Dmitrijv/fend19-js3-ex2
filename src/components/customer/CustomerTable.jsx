@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import styles from "../../styles/js/styles";
 import UserKit from "./../../data/UserKit";
 import CustomerTableRow from "./CustomerTableRow";
+
+import { BusinessContext } from "./../../contexts/BusinessContext";
 
 const CustomerSheet = styled(styles.InfoSheet)`
   width: 100%;
@@ -34,6 +36,7 @@ const CustomerTableTag = styled.table`
 
 export default function CustomerTable({ customerList }) {
   const userKit = new UserKit();
+  const { setCustomerList } = useContext(BusinessContext);
   return (
     <CustomerSheet>
       <h2>{customerList.length} customer(s) on record</h2>
@@ -49,10 +52,11 @@ export default function CustomerTable({ customerList }) {
         </thead>
         <tbody>
           {customerList.map(function(customer, index) {
-            const deleteCallback = () => userKit.deleteCustomer(customer.id);
-            return (
-              <CustomerTableRow key={`customer-row-${index}`} customer={customer} deleteCallback={deleteCallback} />
-            );
+            const deleteCallback = () => {
+              userKit.deleteCustomer(customer.id);
+              setCustomerList(customerList.filter(validCustomer => validCustomer.id !== customer.id));
+            };
+            return <CustomerTableRow key={`cstmr-row-${index}`} customer={customer} deleteCallback={deleteCallback} />;
           })}
         </tbody>
       </CustomerTableTag>
