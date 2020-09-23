@@ -5,7 +5,9 @@ export default function GlobalLayout({ children }) {
   return (
     <div>
       <Header />
-      <main>{children}</main>
+      <main>
+        <div className="centered-container">{children}</div>
+      </main>
     </div>
   );
 }

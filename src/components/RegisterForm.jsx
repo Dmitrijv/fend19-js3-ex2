@@ -59,7 +59,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <styles.FlexContainer className="white-card">
+    <styles.FlexContainer>
       <styles.FormContainer>
         <h2>Register New User</h2>
         <form onSubmit={handleRegister}>

@@ -52,14 +52,12 @@ export default function HomePage() {
 
   return (
     <GlobalLayout>
-      <div className="centered-container">
-        <div className="white-card">
-          {activeUser && <ActiveUserSheet activeUser={activeUser} />}
-          <CustomerInfoWrapper>
-            <CreateCustomerForm />
-            {customerList && <CustomerTable customerList={customerList} />}
-          </CustomerInfoWrapper>
-        </div>
+      <div className="white-card">
+        {activeUser && <ActiveUserSheet activeUser={activeUser} />}
+        <CustomerInfoWrapper>
+          <CreateCustomerForm />
+          {customerList && <CustomerTable customerList={customerList} />}
+        </CustomerInfoWrapper>
       </div>
     </GlobalLayout>
   );

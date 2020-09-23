@@ -65,21 +65,19 @@ export default function LoginPage() {
     <GlobalLayout>
       {/* If uid and token doesn't exist in url, render login form */}
       {!uid && !token && (
-        <div className="centered-container">
-          <div className="white-card">
-            <FlexForm onSubmit={handleLogin}>
-              <h2>Sign In</h2>
-              <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-              <input
-                placeholder="password"
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-              />
-              <button type="submit">Sign In</button>
-            </FlexForm>
-          </div>
+        <div className="white-card">
+          <FlexForm onSubmit={handleLogin}>
+            <h2>Sign In</h2>
+            <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+            <input
+              placeholder="password"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit">Sign In</button>
+          </FlexForm>
         </div>
       )}
     </GlobalLayout>

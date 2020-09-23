@@ -16,9 +16,11 @@ export default function Start() {
 
   return (
     <GlobalLayout>
-      <div className="centered-container">
+      <div className="white-card">
         <RegisterForm />
-        <p className="white-card text-center">
+      </div>
+      <div className="white-card">
+        <p className="text-center">
           Already registered? <Link to={`/login`}>Sign in here.</Link>
         </p>
       </div>
