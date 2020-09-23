@@ -1,21 +1,25 @@
 div.header {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0; /* required */
-  background-color: #222c34;
+  background-color: #293a4a; //#222c34 // 242930 // 293a4a
   margin-bottom: 20px;
-  z-index: 2;
-  padding: 10px 0px;
+  padding: 14px 0px;
   color: white;
+
+  button.sign-out-btn {
+    padding: 2px 6px;
+  }
+
+  .logo {
+    padding: 0 10px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    //   border-left: 8px solid #57cc8a;
+  }
 
   div.centered-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    .logo {
-      padding: 0 10px;
-      color: white;
-    }
+    align-items: baseline;
 
     a:visited,
     a:link {
