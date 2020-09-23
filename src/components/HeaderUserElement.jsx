@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import styled from "styled-components";
 import UserKit from "./../data/UserKit";
@@ -26,19 +26,29 @@ export default function HeaderUserElement() {
 
   const { activeUser, setActiveUser } = useContext(BusinessContext);
 
+  function handleLogOut(event) {
+    setActiveUser(null);
+    userKit.deleteToken();
+    history.push("/");
+    event.preventDefault();
+  }
+
+  useEffect(() => {
+    //console.log("updating active user");
+    if (userKit.getToken()) {
+      userKit
+        .getActiveUser()
+        .then(res => res.json())
+        .then(({ email, firstName, lastName }) => setActiveUser({ email, firstName, lastName }));
+    }
+  }, []);
+
   if (!activeUser || !activeUser.email) {
     return (
       <UserProfileContainer>
         <Link to={`/login`}>Sign In</Link>
       </UserProfileContainer>
     );
-  }
-
-  function handleLogOut(event) {
-    setActiveUser(null);
-    userKit.deleteToken();
-    history.push("/");
-    event.preventDefault();
   }
 
   return (

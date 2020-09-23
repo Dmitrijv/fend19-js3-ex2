@@ -29,19 +29,25 @@ export default function HomePage() {
   const { activeUser, customerList, setCustomerList } = useContext(BusinessContext);
 
   useEffect(() => {
-    console.log("hello there");
+    // we don't have a token
+    if (!userKit.getToken()) {
+      history.push("/");
+      return;
+    }
+    // we are not considered an active use by the backend server
+    userKit.getActiveUser().then(response => {
+      if (response.status === 401) {
+        history.push("/");
+        return;
+      }
+    });
+    // update customer list
     userKit
       .getCustomerList()
       .then(res => res.json())
       .then(data => {
         setCustomerList(data.results);
       });
-  }, []);
-
-  useEffect(() => {
-    userKit.getActiveUser().then(response => {
-      if (response.status === 401) history.push("/");
-    });
   }, []);
 
   return (
