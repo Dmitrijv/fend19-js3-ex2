@@ -28,7 +28,7 @@ export default function HeaderUserElement() {
   if (!userEmail || userEmail.lenth === 0) {
     return (
       <UserProfileContainer>
-        <Link to={`/login`}>Log In</Link>
+        <Link to={`/login`}>Sign In</Link>
       </UserProfileContainer>
     );
   }
@@ -36,7 +36,7 @@ export default function HeaderUserElement() {
   return (
     <UserProfileContainer>
       <Link to={`/home`}>{userEmail}</Link>
-      <button onClick={handleLogOut}>Log Out</button>
+      <button onClick={handleLogOut}>Sign Out</button>
     </UserProfileContainer>
   );
 }

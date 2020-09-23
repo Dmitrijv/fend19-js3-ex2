@@ -68,7 +68,7 @@ export default function LoginPage() {
         <div className="centered-container">
           <div className="white-card">
             <FlexForm onSubmit={handleLogin}>
-              <h2>{accountActivationMsg && accountActivationMsg} Please Login</h2>
+              <h2>{accountActivationMsg && accountActivationMsg} Sign In</h2>
               <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
               <input
                 placeholder="password"
@@ -77,7 +77,7 @@ export default function LoginPage() {
                 onChange={e => setPassword(e.target.value)}
                 required
               />
-              <button type="submit">Login</button>
+              <button type="submit">Sign In</button>
             </FlexForm>
           </div>
         </div>

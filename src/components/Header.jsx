@@ -7,7 +7,7 @@ export default function Header() {
     <div className="header">
       <div className="centered-container">
         <Link to={`/`}>
-          <h1 className="logo">Business App</h1>
+          <h1 className="logo">JS3 - Business App</h1>
         </Link>
         <HeaderUserElement />
       </div>
