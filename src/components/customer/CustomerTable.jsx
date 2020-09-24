@@ -43,18 +43,20 @@ export default function CustomerTable({ customerList }) {
       <CustomerTableTag>
         <thead>
           <tr>
-            <th>Reference #</th>
+            <th>ID</th>
+            <th>Reference</th>
             <th>Name</th>
             <th>Organisation</th>
-            <th>Update</th>
+            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           {customerList.map(function(customer, index) {
             const deleteCallback = () => {
-              userKit.deleteCustomer(customer.id);
-              setCustomerList(customerList.filter(validCustomer => validCustomer.id !== customer.id));
+              userKit
+                .deleteCustomer(customer.id)
+                .then(setCustomerList(customerList.filter(validCustomer => validCustomer.id !== customer.id)));
             };
             return <CustomerTableRow key={`cstmr-row-${index}`} customer={customer} deleteCallback={deleteCallback} />;
           })}
