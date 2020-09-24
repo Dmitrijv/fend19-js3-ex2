@@ -22,6 +22,9 @@ const CustomerInfoWrapper = styled.div`
     & > *:not(:last-child) {
       margin-right: 10px;
     }
+    #create-customer-container {
+      min-width: 250px;
+    }
   }
 `;
 
@@ -54,7 +57,7 @@ export default function HomePage() {
       <div className="white-card">
         {activeUser && <ActiveUserSheet activeUser={activeUser} />}
         <CustomerInfoWrapper>
-          <CreateCustomerForm />
+          {customerList && <CreateCustomerForm />}
           {customerList && <CustomerTable customerList={customerList} />}
         </CustomerInfoWrapper>
       </div>

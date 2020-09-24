@@ -72,7 +72,7 @@ export default function CreateCustomerForm() {
 
   return (
     <NewCustomerSheet>
-      <styles.FlexContainer>
+      <styles.FlexContainer id="create-customer-container">
         <h2>Create New Customer</h2>
         <styles.ColumnForm onSubmit={handleCreateCustomer}>
           {inputFieldsArray.map((template, index) => (
