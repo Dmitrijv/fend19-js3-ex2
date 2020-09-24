@@ -1,16 +1,15 @@
 import React from "react";
 
-export default function InputField({ fieldTemplate, index }) {
+export default function InputField({ template }) {
+  const placeholder = template.placeholder ? `${template.label} (${template.placeholder})` : template.label;
   return (
     <input
-      placeholder={
-        fieldTemplate.placeholder ? `${fieldTemplate.label} (${fieldTemplate.placeholder})` : fieldTemplate.label
-      }
-      id={fieldTemplate.placeholder || fieldTemplate.label}
-      value={fieldTemplate.value}
-      onChange={e => fieldTemplate.callback(e.target.value)}
-      required={fieldTemplate.required || false}
-      type={fieldTemplate.type || "text"}
+      placeholder={placeholder}
+      id={template.placeholder || template.label}
+      value={template.value}
+      onChange={e => template.callback(e.target.value)}
+      required={template.required || false}
+      type={template.type || "text"}
     />
   );
 }
