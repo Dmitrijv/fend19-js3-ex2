@@ -34,9 +34,9 @@ const InfoSheet = styled.div`
   padding: 15px;
   background-color: #fafafa;
   margin-bottom: 10px;
-  -webkit-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 4px 6px -5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 45px 6px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px -5px rgba(0, 0, 0, 0.2);
   h2 {
     margin: 0 0 10px 0;
   }
