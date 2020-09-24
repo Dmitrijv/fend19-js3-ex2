@@ -13,12 +13,12 @@ import CreateCustomerForm from "../components/customer/CreateCustomerForm";
 const CustomerInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  *:last-child {
+    margin-bottom: 0px;
+  }
   @media only screen and (min-width: 800px) {
     flex-direction: row;
     align-items: flex-start;
-    *:not(:last-child) {
-      margin-right: 10px;
-    }
   }
 `;
 
@@ -26,28 +26,24 @@ export default function HomePage() {
   const userKit = new UserKit();
   const history = useHistory();
 
-  const { activeUser, customerList, setCustomerList } = useContext(BusinessContext);
+  const { activeUser, customerList, fetchCustomerList } = useContext(BusinessContext);
 
   useEffect(() => {
     // we don't have a token
     if (!userKit.getToken()) {
       history.push("/");
       return;
-    }
-    // we are not considered an active user by the backend server
-    userKit.getActiveUser().then(response => {
-      if (response.status === 401) {
-        history.push("/");
-        return;
-      }
-    });
-    // update customer list
-    userKit
-      .getCustomerList()
-      .then(res => res.json())
-      .then(data => {
-        setCustomerList(data.results);
+    } else {
+      // we are not considered an active user by the backend server
+      userKit.getActiveUser().then(response => {
+        if (response.status === 401) {
+          history.push("/");
+          return;
+        } else {
+          fetchCustomerList();
+        }
       });
+    }
   }, []);
 
   return (

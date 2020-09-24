@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.scss";
 
+import UserKit from "./data/UserKit";
 import { BusinessContext } from "./contexts/BusinessContext";
 
 import StartPage from "./pages/StartPage";
@@ -10,16 +11,29 @@ import HomePage from "./pages/HomePage";
 import UserVerifyPage from "./pages/UserVerifyPage";
 import UserActivePage from "./pages/UserActivePage";
 import CustomerDetailsPage from "./pages/CustomerDetailsPage";
+import EditCustomerPage from "./pages/EditCustomerPage";
 
 function App() {
+  const userKit = new UserKit();
+
   const [activeUser, setActiveUser] = useState(null);
   const [customerList, setCustomerList] = useState(null);
 
+  function fetchCustomerList() {
+    userKit
+      .getCustomerList()
+      .then(res => res.json())
+      .then(data => {
+        setCustomerList(data.results);
+      });
+  }
+
   return (
     <div>
-      <BusinessContext.Provider value={{ activeUser, setActiveUser, customerList, setCustomerList }}>
+      <BusinessContext.Provider value={{ activeUser, setActiveUser, customerList, setCustomerList, fetchCustomerList }}>
         <Switch>
-          <Route path="/customer/:customerId" exact render={props => <CustomerDetailsPage {...props} />} />
+          <Route path="/edit-customer/:customerId" render={props => <EditCustomerPage {...props} />} />
+          <Route path="/customer/:customerId" render={props => <CustomerDetailsPage {...props} />} />
           <Route path="/login" exact component={LoginPage} />
           <Route path="/verify" exact component={UserVerifyPage} />
           <Route path="/active" exact component={UserActivePage} />
