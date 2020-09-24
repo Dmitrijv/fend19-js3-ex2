@@ -34,7 +34,7 @@ export default function HomePage() {
       history.push("/");
       return;
     }
-    // we are not considered an active use by the backend server
+    // we are not considered an active user by the backend server
     userKit.getActiveUser().then(response => {
       if (response.status === 401) {
         history.push("/");
