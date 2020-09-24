@@ -36,7 +36,7 @@ const CustomerTableTag = styled.table`
 
 export default function CustomerTable({ customerList }) {
   const userKit = new UserKit();
-  const { setCustomerList } = useContext(BusinessContext);
+  const { fetchCustomerList } = useContext(BusinessContext);
   return (
     <CustomerSheet>
       <h2>{customerList.length} customer(s) on record</h2>
@@ -54,9 +54,7 @@ export default function CustomerTable({ customerList }) {
         <tbody>
           {customerList.map(function(customer, index) {
             const deleteCallback = () => {
-              userKit
-                .deleteCustomer(customer.id)
-                .then(setCustomerList(customerList.filter(validCustomer => validCustomer.id !== customer.id)));
+              userKit.deleteCustomer(customer.id).then(() => fetchCustomerList());
             };
             return <CustomerTableRow key={`cstmr-row-${index}`} customer={customer} deleteCallback={deleteCallback} />;
           })}
