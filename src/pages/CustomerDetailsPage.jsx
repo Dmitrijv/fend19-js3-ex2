@@ -12,14 +12,6 @@ const CustomerSheet = styled(styles.InfoSheet)`
   border-left: 6px solid #45abcd;
 `;
 
-const CustomerDetailsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  button:not(:last-child) {
-    margin-bottom: 10px;
-  }
-`;
-
 export default function CustomerDetailsPage() {
   const { customerId } = useParams();
   const { customerList } = useContext(BusinessContext);
@@ -27,9 +19,10 @@ export default function CustomerDetailsPage() {
   let customer = customerList ? customerList.find(customer => customer.id === Number(customerId)) : null;
   return (
     <GlobalLayout>
-      {customer && (
-        <div className="white-card">
-          <CustomerDetailsWrapper>
+      <div className="white-card">
+        {!customer && <p>Customer not found.</p>}
+        {customer && (
+          <styles.FlexContainer>
             <CustomerSheet>
               <h2>Customer #{customer.id}</h2>
               <div>
@@ -54,11 +47,11 @@ export default function CustomerDetailsPage() {
                 <strong>Website: </strong> {customer.website || "n/a"}
               </div>
             </CustomerSheet>
-            <button>DELETE</button>
             <button>UPDATE</button>
-          </CustomerDetailsWrapper>
-        </div>
-      )}
+            <button>DELETE</button>
+          </styles.FlexContainer>
+        )}
+      </div>
     </GlobalLayout>
   );
 }
