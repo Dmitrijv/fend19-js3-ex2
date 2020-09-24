@@ -23,17 +23,16 @@ export default function LoginPage() {
   const userKit = new UserKit();
   const history = useHistory();
 
-  // Use URL Search Params to parse the query parameters from the url
-  const params = new URLSearchParams(history.location.search);
-  const uid = params.get("uid");
-  const token = params.get("token");
-
   function handleActivateAccount() {
     userKit.activateUser(uid, token).then(() => {
       history.push("/active");
     });
   }
 
+  const params = new URLSearchParams(history.location.search);
+  const uid = params.get("uid");
+  const token = params.get("token");
+  // if we have been navigated to this page through an account activation link, handle that proccess
   if (uid && token) handleActivateAccount();
 
   const { setActiveUser } = useContext(BusinessContext);
