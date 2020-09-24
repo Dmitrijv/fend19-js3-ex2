@@ -12,9 +12,10 @@ const NewCustomerSheet = styled(styles.InfoSheet)`
 `;
 
 export default function CreateCustomerForm() {
+  const CUSTOMER_LIMIT = 10;
   const userKit = new UserKit();
 
-  const { setCustomerList } = useContext(BusinessContext);
+  const { customerList, setCustomerList } = useContext(BusinessContext);
 
   const [name, setName] = useState("");
   const [organisationNr, setOrganisationNr] = useState("");
@@ -33,11 +34,18 @@ export default function CreateCustomerForm() {
     event.preventDefault();
   }
 
+  let submitDisabled = customerList && customerList.length >= CUSTOMER_LIMIT ? true : false;
+
   return (
     <NewCustomerSheet>
       <h2>Create New Customer</h2>
       <form onSubmit={handleCreateCustomer}>
-        <button type="submit">Submit</button>
+        {submitDisabled && (
+          <button type="submit" disabled>
+            Customer Limit Reached
+          </button>
+        )}
+        {!submitDisabled && <button type="submit">Create</button>}
       </form>
     </NewCustomerSheet>
   );
