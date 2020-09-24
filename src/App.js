@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import UserVerifyPage from "./pages/UserVerifyPage";
 import UserActivePage from "./pages/UserActivePage";
+import CustomerDetailsPage from "./pages/CustomerDetailsPage";
 
 function App() {
   const [activeUser, setActiveUser] = useState(null);
@@ -18,6 +19,7 @@ function App() {
     <div>
       <BusinessContext.Provider value={{ activeUser, setActiveUser, customerList, setCustomerList }}>
         <Switch>
+          <Route path="/customer/:customerId" exact render={props => <CustomerDetailsPage {...props} />} />
           <Route path="/login" exact component={LoginPage} />
           <Route path="/verify" exact component={UserVerifyPage} />
           <Route path="/active" exact component={UserActivePage} />
