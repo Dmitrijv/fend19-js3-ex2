@@ -8,6 +8,15 @@ const FlexContainer = styled.div`
   }
 `;
 
+const ColumnForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  //   form input,
+  //   form button {
+  //     margin-right: 0px;
+  //   }
+`;
+
 const FormContainer = styled.div`
   text-align: left;
   margin: auto;
@@ -49,6 +58,7 @@ const styles = {
   FlexContainer: FlexContainer,
   FormContainer: FormContainer,
   InputContainer: InputContainer,
+  ColumnForm: ColumnForm,
   InfoSheet: InfoSheet
 };
 

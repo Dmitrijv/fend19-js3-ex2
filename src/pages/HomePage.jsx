@@ -13,12 +13,15 @@ import CreateCustomerForm from "../components/customer/CreateCustomerForm";
 const CustomerInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  *:last-child {
-    margin-bottom: 0px;
+  & > *:not(:last-child) {
+    margin-bottom: 10px;
   }
   @media only screen and (min-width: 800px) {
     flex-direction: row;
     align-items: flex-start;
+    & > *:not(:last-child) {
+      margin-right: 10px;
+    }
   }
 `;
 

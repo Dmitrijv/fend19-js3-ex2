@@ -10,17 +10,6 @@ import InputField from "./../InputField";
 
 const NewCustomerSheet = styled(styles.InfoSheet)`
   border-left: 6px solid #83b655;
-  margin-right: 10px;
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  form input,
-  form button {
-    min-width: 320px;
-    margin-right: 0px;
-  }
 `;
 
 export default function CreateCustomerForm() {
@@ -61,7 +50,6 @@ export default function CreateCustomerForm() {
 
   function handleCreateCustomer(event) {
     const form = event.currentTarget;
-    console.log(form);
     const newCustomer = {
       name: name,
       organisationNr: organisationNr,
@@ -86,9 +74,9 @@ export default function CreateCustomerForm() {
     <NewCustomerSheet>
       <styles.FlexContainer>
         <h2>Create New Customer</h2>
-        <form onSubmit={handleCreateCustomer}>
-          {inputFieldsArray.map((fieldTemplate, index) => (
-            <InputField fieldTemplate={fieldTemplate} key={`create-customer-field-${index}`} />
+        <styles.ColumnForm onSubmit={handleCreateCustomer}>
+          {inputFieldsArray.map((template, index) => (
+            <InputField template={template} key={`create-customer-field-${index}`} />
           ))}
           {submitDisabled && (
             <button type="submit" disabled>
@@ -96,7 +84,7 @@ export default function CreateCustomerForm() {
             </button>
           )}
           {!submitDisabled && <button type="submit">Create</button>}
-        </form>
+        </styles.ColumnForm>
       </styles.FlexContainer>
     </NewCustomerSheet>
   );
