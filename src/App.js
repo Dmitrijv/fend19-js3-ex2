@@ -22,22 +22,23 @@ function App() {
   function fetchCustomerList() {
     userKit
       .getCustomerList()
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         setCustomerList(data.results);
       });
   }
 
-  function checkIfAuthorized() {
+  async function checkIfAuthorized() {
+    let isAuthorized = false;
     // we don't have a token
     if (!userKit.getToken()) {
-      return false;
+      isAuthorized = false;
     } else {
+      const response = await userKit.getActiveUser();
       // we are not considered an active user by the backend server
-      userKit.getActiveUser().then((response) => {
-        return response.status === 401 ? false : true;
-      });
+      isAuthorized = response.status === 401 ? false : true;
     }
+    return isAuthorized;
   }
 
   return (
@@ -46,8 +47,8 @@ function App() {
         value={{ activeUser, setActiveUser, customerList, fetchCustomerList, checkIfAuthorized }}
       >
         <Switch>
-          <Route path="/edit-customer/:customerId" render={(props) => <EditCustomerPage {...props} />} />
-          <Route path="/customer/:customerId" render={(props) => <CustomerDetailsPage {...props} />} />
+          <Route path="/edit-customer/:customerId" render={props => <EditCustomerPage {...props} />} />
+          <Route path="/customer/:customerId" render={props => <CustomerDetailsPage {...props} />} />
           <Route path="/login" exact component={LoginPage} />
           <Route path="/verify" exact component={UserVerifyPage} />
           <Route path="/active" exact component={UserActivePage} />

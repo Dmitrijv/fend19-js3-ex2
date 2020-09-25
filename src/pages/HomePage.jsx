@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
@@ -29,27 +29,19 @@ const CustomerInfoWrapper = styled.div`
 `;
 
 export default function HomePage() {
-  const userKit = new UserKit();
   const history = useHistory();
 
-  const { activeUser, customerList, fetchCustomerList } = useContext(BusinessContext);
+  const { activeUser, customerList, checkIfAuthorized, fetchCustomerList } = useContext(BusinessContext);
 
   useEffect(() => {
-    // we don't have a token
-    if (!userKit.getToken()) {
-      history.push("/");
-      return;
-    } else {
-      // we are not considered an active user by the backend server
-      userKit.getActiveUser().then(response => {
-        if (response.status === 401) {
-          history.push("/");
-          return;
-        } else {
-          fetchCustomerList();
-        }
-      });
-    }
+    checkIfAuthorized().then(isAuthorized => {
+      if (isAuthorized === false) {
+        history.push("/");
+        return;
+      } else {
+        if (!customerList) fetchCustomerList();
+      }
+    });
   }, []);
 
   return (
