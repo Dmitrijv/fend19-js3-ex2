@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import UserKit from "./../data/UserKit";
@@ -9,6 +8,7 @@ import GlobalLayout from "./layout/GlobalLayout";
 import ActiveUserSheet from "../components/ActiveUserSheet";
 import CustomerTable from "../components/customer/CustomerTable";
 import CreateCustomerForm from "../components/customer/CreateCustomerForm";
+import UnauthorizedErrorPage from "./errors/UnauthorizedErrorPage";
 
 const CustomerInfoWrapper = styled.div`
   display: flex;
@@ -29,20 +29,27 @@ const CustomerInfoWrapper = styled.div`
 `;
 
 export default function HomePage() {
-  const history = useHistory();
-
   const { activeUser, customerList, checkIfAuthorized, fetchCustomerList } = useContext(BusinessContext);
+  const [isUserAuthorized, setIsUserAuthorized] = useState(null);
 
   useEffect(() => {
+    // setIsUserAuthorized(true);
+    // if (!customerList) fetchCustomerList();
     checkIfAuthorized().then(isAuthorized => {
       if (isAuthorized === false) {
-        history.push("/");
+        setIsUserAuthorized(false);
         return;
       } else {
+        setIsUserAuthorized(true);
         if (!customerList) fetchCustomerList();
       }
     });
   }, []);
+
+  // avoid "blinking" of error page while we figure out if user is authorized or not
+  if (isUserAuthorized === null) return <GlobalLayout />;
+  // show error page if we know for sure user is not authorized
+  else if (isUserAuthorized === false) return <UnauthorizedErrorPage />;
 
   return (
     <GlobalLayout>

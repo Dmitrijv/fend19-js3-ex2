@@ -12,6 +12,7 @@ import UserVerifyPage from "./pages/UserVerifyPage";
 import UserActivePage from "./pages/UserActivePage";
 import CustomerDetailsPage from "./pages/CustomerDetailsPage";
 import EditCustomerPage from "./pages/EditCustomerPage";
+import UnauthorizedErrorPage from "./pages/errors/UnauthorizedErrorPage";
 
 function App() {
   const userKit = new UserKit();
@@ -34,8 +35,8 @@ function App() {
     if (!userKit.getToken()) {
       isAuthorized = false;
     } else {
+      // check if token is still valid
       const response = await userKit.getActiveUser();
-      // we are not considered an active user by the backend server
       isAuthorized = response.status === 401 ? false : true;
     }
     return isAuthorized;
@@ -54,6 +55,7 @@ function App() {
           <Route path="/active" exact component={UserActivePage} />
           <Route path="/home" exact component={HomePage} />
           <Route path="/" exact component={StartPage} />
+          <Route path="*" exact component={UnauthorizedErrorPage} />
         </Switch>
       </BusinessContext.Provider>
     </div>
