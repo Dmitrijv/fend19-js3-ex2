@@ -59,18 +59,16 @@ const RegisterForm = () => {
   }
 
   return (
-    <styles.FlexContainer>
-      <styles.FormContainer>
-        <h2>Register New User</h2>
-        <form onSubmit={handleRegister}>
-          {inputItemsArray.map(([placeholder, value, setValue], index) =>
-            renderInput(index, placeholder, value, setValue)
-          )}
-          {renderDropdownInput(inputItemsArray.length + 1, "Organisation Kind", organisationKinds, setOrganisationKind)}
-          <button type="submit">Register</button>
-        </form>
-      </styles.FormContainer>
-    </styles.FlexContainer>
+    <styles.SimpleFormSheet>
+      <h2>Register New User</h2>
+      <styles.ColumnForm onSubmit={handleRegister}>
+        {inputItemsArray.map(([placeholder, value, setValue], index) =>
+          renderInput(index, placeholder, value, setValue)
+        )}
+        {renderDropdownInput(inputItemsArray.length + 1, "Organisation Kind", organisationKinds, setOrganisationKind)}
+        <button type="submit">Register</button>
+      </styles.ColumnForm>
+    </styles.SimpleFormSheet>
   );
 };
 

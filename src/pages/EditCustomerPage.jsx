@@ -10,15 +10,6 @@ import { BusinessContext } from "../contexts/BusinessContext";
 import UnauthorizedErrorPage from "./errors/UnauthorizedErrorPage";
 import InputField from "../components/InputField";
 
-const UpdateCustomerSheet = styled(styles.InfoSheet)`
-  border: 1px solid whitesmoke;
-  max-width: 350px;
-  margin: 0 auto;
-  input {
-    margin-bottom: 10px;
-  }
-`;
-
 export default function EditCustomerPage() {
   const userKit = new UserKit();
   const history = useHistory();
@@ -39,17 +30,18 @@ export default function EditCustomerPage() {
   const [phoneNumber, setPhoneNumber] = useState(""); // string max:20
 
   const customerInputFields = [
-    { label: "Name", value: name, callback: setName, required: true, minLength: 1, maxLength: 50 },
-    { label: "Organisation nr", value: organisationNr, callback: setOrganisationNr, maxLength: 30 },
+    { label: "Name", value: name, callback: setName, required: true, minLength: 1, maxLength: 50, showLabel: true },
+    { label: "Organisation nr", value: organisationNr, callback: setOrganisationNr, maxLength: 30, showLabel: true },
     {
       label: "Vat nr",
       value: vatNr,
       callback: setVatNr,
       placeholder: "SE##########",
       maxLength: 12,
-      pattern: "SE[0-9]{10}"
+      pattern: "SE[0-9]{10}",
+      showLabel: true
     },
-    { label: "Reference", value: reference, callback: setReference, maxLength: 50 },
+    { label: "Reference", value: reference, callback: setReference, maxLength: 50, showLabel: true },
     {
       label: "Payment term",
       value: paymentTerm,
@@ -57,11 +49,12 @@ export default function EditCustomerPage() {
       required: true,
       placeholder: "days",
       pattern: "^[0-9]*$",
-      maxLength: 10
+      maxLength: 10,
+      showLabel: true
     },
-    { label: "Website", value: website, callback: setWebsite, maxLength: 50 },
-    { label: "Email", value: email, callback: setEmail, type: "email", maxLength: 254 },
-    { label: "Phone number", value: phoneNumber, callback: setPhoneNumber, maxLength: 20 }
+    { label: "Website", value: website, callback: setWebsite, maxLength: 50, showLabel: true },
+    { label: "Email", value: email, callback: setEmail, type: "email", maxLength: 254, showLabel: true },
+    { label: "Phone number", value: phoneNumber, callback: setPhoneNumber, maxLength: 20, showLabel: true }
   ];
 
   function fillInInputFields(customer) {
@@ -124,15 +117,15 @@ export default function EditCustomerPage() {
   return (
     <GlobalLayout>
       <div className="white-card">
-        <UpdateCustomerSheet>
+        <styles.SimpleFormSheet>
           <h2>Updating Customer #{customer.id}</h2>
           <styles.ColumnForm onSubmit={handleUpdateCustomer}>
             {customerInputFields.map((template, index) => (
-              <InputField template={template} key={`create-customer-field-${index}`} />
+              <InputField template={template} showLabel={true} key={`create-customer-field-${index}`} />
             ))}
             <button type="submit">Update Customer</button>
           </styles.ColumnForm>
-        </UpdateCustomerSheet>
+        </styles.SimpleFormSheet>
       </div>
     </GlobalLayout>
   );

@@ -11,10 +11,6 @@ const FlexContainer = styled.div`
 const ColumnForm = styled.form`
   display: flex;
   flex-direction: column;
-  //   form input,
-  //   form button {
-  //     margin-right: 0px;
-  //   }
 `;
 
 const FormContainer = styled.div`
@@ -29,16 +25,15 @@ const FormContainer = styled.div`
 
 const InputContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
-  label {
-    margin-right: 1rem;
-  }
+  flex-direction: column;
   input {
-    font-size: 1rem;
-    width: 200px;
+    background-color: white;
+  }
+  select {
+    margin-bottom: 10px;
+  }
+  label {
+    margin-bottom: 4px;
   }
 `;
 
@@ -54,11 +49,21 @@ const InfoSheet = styled.div`
   }
 `;
 
+const SimpleFormSheet = styled(InfoSheet)`
+  border: 1px solid whitesmoke;
+  max-width: 350px;
+  margin: 0 auto;
+  input {
+    margin-bottom: 10px;
+  }
+`;
+
 const styles = {
   FlexContainer: FlexContainer,
   FormContainer: FormContainer,
   InputContainer: InputContainer,
   ColumnForm: ColumnForm,
+  SimpleFormSheet: SimpleFormSheet,
   InfoSheet: InfoSheet
 };
 
