@@ -27,7 +27,7 @@ export default function CreateCustomerForm() {
   const [email, setEmail] = useState(""); //string max:254
   const [phoneNumber, setPhoneNumber] = useState(""); // string max:20
 
-  const inputFieldsArray = [
+  const customerInputFields = [
     { label: "Name", value: name, callback: setName, required: true, minLength: 1, maxLength: 50 },
     { label: "Organisation nr", value: organisationNr, callback: setOrganisationNr, maxLength: 30 },
     {
@@ -54,7 +54,7 @@ export default function CreateCustomerForm() {
   ];
 
   function emptyInputFieldValues() {
-    inputFieldsArray.forEach(field => field.callback(""));
+    customerInputFields.forEach(field => field.callback(""));
   }
 
   function handleCreateCustomer(event) {
@@ -84,7 +84,7 @@ export default function CreateCustomerForm() {
       <styles.FlexContainer id="create-customer-container">
         <h2>Create New Customer</h2>
         <styles.ColumnForm onSubmit={handleCreateCustomer}>
-          {inputFieldsArray.map((template, index) => (
+          {customerInputFields.map((template, index) => (
             <InputField template={template} key={`create-customer-field-${index}`} />
           ))}
           {submitDisabled && (
