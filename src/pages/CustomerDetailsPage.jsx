@@ -4,10 +4,10 @@ import GlobalLayout from "./layout/GlobalLayout";
 import UnauthorizedErrorPage from "./errors/UnauthorizedErrorPage";
 
 import styled from "styled-components";
-
 import styles from "./../styles/js/styles";
-import { BusinessContext } from "./../contexts/BusinessContext";
+
 import UserKit from "../data/UserKit";
+import { BusinessContext } from "./../contexts/BusinessContext";
 
 const CustomerSheet = styled(styles.InfoSheet)`
   width: 100%;
