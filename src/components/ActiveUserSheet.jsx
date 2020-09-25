@@ -10,7 +10,7 @@ const UserSheet = styled(styles.InfoSheet)`
 export default function ActiveUserSheet({ activeUser }) {
   return (
     <UserSheet>
-      <h2>Active User</h2>
+      <h2>Signed In As:</h2>
       <div>
         <strong>Email: </strong> {activeUser.email}
       </div>
