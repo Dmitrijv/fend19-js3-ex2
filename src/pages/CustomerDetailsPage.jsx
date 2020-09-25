@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GlobalLayout from "./layout/GlobalLayout";
 import UnauthorizedErrorPage from "./errors/UnauthorizedErrorPage";
@@ -11,19 +11,45 @@ import UserKit from "../data/UserKit";
 
 const CustomerSheet = styled(styles.InfoSheet)`
   width: 100%;
+  @media only screen and (min-width: 800px) {
+    max-width: 420px;
+  }
+  margin: 0 auto;
   border-left: 6px solid #45abcd;
 `;
 
 export default function CustomerDetailsPage() {
+  const userKit = new UserKit();
   const { customerId } = useParams();
   const { customerList, checkIfAuthorized } = useContext(BusinessContext);
 
-  // get customer information from local customer list
-  let customer = customerList ? customerList.find((customer) => customer.id === Number(customerId)) : null;
-  // if local list is empty
-  // customer = customer || userKit.getCustomerById(customerId);
+  const [isUserAuthorized, setIsUserAuthorized] = useState(null);
+  const [customer, setCustomer] = useState(null);
 
-  if (!customer || !customer.id) return <UnauthorizedErrorPage />;
+  useEffect(() => {
+    checkIfAuthorized().then(isAuthorized => {
+      if (isAuthorized === false) {
+        setIsUserAuthorized(false);
+        return;
+      } else {
+        setIsUserAuthorized(true);
+        // check if we already have this customer in local customerList before making a network request
+        setCustomer(customerList ? customerList.find(customer => customer.id === Number(customerId)) : null);
+        // otherwise get customer data from the api
+        if (!customer) {
+          userKit
+            .getCustomerById(customerId)
+            .then(res => res.json())
+            .then(response => setCustomer(response));
+        }
+      }
+    });
+  }, []);
+
+  // avoid "blinking" error page on screen  while we fetch authorization and customer data from the api
+  if (isUserAuthorized === null || (isUserAuthorized === true && !customer)) return <GlobalLayout />;
+  // show error page if we know for sure user is not authorized or customer doesn't exist
+  else if (isUserAuthorized === false || !customer) return <UnauthorizedErrorPage />;
 
   return (
     <GlobalLayout>
@@ -41,6 +67,9 @@ export default function CustomerDetailsPage() {
               </div>
               <div>
                 <strong>Phone Nr: </strong> {customer.phoneNumber || "n/a"}
+              </div>
+              <div>
+                <strong>Reference: </strong> {customer.reference || "n/a"}
               </div>
               <div>
                 <strong>Organisation nr: </strong> {customer.organisationNr || "n/a"}

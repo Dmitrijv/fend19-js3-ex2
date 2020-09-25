@@ -64,6 +64,13 @@ export default class {
     });
   }
 
+  async getCustomerById(id) {
+    const url = `${ROOT_URL}api/v1/customers/${id}/`;
+    return fetch(url, {
+      headers: this.getPrivateHeaders()
+    });
+  }
+
   async deleteCustomer(id) {
     const url = `${ROOT_URL}api/v1/customers/${id}/ `;
     return fetch(url, {
