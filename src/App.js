@@ -25,7 +25,7 @@ function App() {
       .getCustomerList()
       .then(res => res.json())
       .then(data => {
-        setCustomerList(data.results);
+        setCustomerList(data.results.sort((a, b) => a.id > b.id));
       });
   }
 
