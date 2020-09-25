@@ -28,20 +28,29 @@ export default function CreateCustomerForm() {
   const [phoneNumber, setPhoneNumber] = useState(""); // string max:20
 
   const inputFieldsArray = [
-    { label: "Name", value: name, callback: setName, required: true },
-    { label: "Organisation nr", value: organisationNr, callback: setOrganisationNr },
-    { label: "Vat nr", value: vatNr, callback: setVatNr, placeholder: "SE##########" },
-    { label: "Reference", value: reference, callback: setReference },
+    { label: "Name", value: name, callback: setName, required: true, minLength: 1, maxLength: 50 },
+    { label: "Organisation nr", value: organisationNr, callback: setOrganisationNr, maxLength: 30 },
+    {
+      label: "Vat nr",
+      value: vatNr,
+      callback: setVatNr,
+      placeholder: "SE##########",
+      maxLength: 12,
+      pattern: "SE[0-9]{10}"
+    },
+    { label: "Reference", value: reference, callback: setReference, maxLength: 50 },
     {
       label: "Payment term",
       value: paymentTerm,
       callback: setPaymentTerm,
       required: true,
-      placeholder: "days"
+      placeholder: "days",
+      pattern: "^[0-9]*$",
+      maxLength: 10
     },
-    { label: "Website", value: website, callback: setWebsite },
-    { label: "Email", value: email, callback: setEmail, type: "email" },
-    { label: "Phone number", value: phoneNumber, callback: setPhoneNumber }
+    { label: "Website", value: website, callback: setWebsite, maxLength: 50 },
+    { label: "Email", value: email, callback: setEmail, type: "email", maxLength: 254 },
+    { label: "Phone number", value: phoneNumber, callback: setPhoneNumber, maxLength: 20 }
   ];
 
   function emptyInputFieldValues() {

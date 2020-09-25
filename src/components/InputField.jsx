@@ -10,6 +10,9 @@ export default function InputField({ template }) {
       onChange={e => template.callback(e.target.value)}
       required={template.required || false}
       type={template.type || "text"}
+      pattern={template.pattern}
+      minLength={template.minLength}
+      maxLength={template.maxLength}
     />
   );
 }
