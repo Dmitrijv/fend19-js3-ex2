@@ -10,6 +10,9 @@ import InputField from "./../InputField";
 
 const NewCustomerSheet = styled(styles.InfoSheet)`
   border-left: 6px solid #83b655;
+  button {
+    width: 100%;
+  }
 `;
 
 export default function CreateCustomerForm() {

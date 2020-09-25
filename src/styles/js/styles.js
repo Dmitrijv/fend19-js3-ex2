@@ -3,19 +3,20 @@ import styled from "styled-components";
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  *:not(:last-child) {
-    margin-bottom: 10px;
-  }
 `;
 
 const ColumnForm = styled.form`
-  display: flex;
-  flex-direction: column;
+  ${FlexContainer};
+  button,
+  input,
+  select {
+    width: 100%;
+  }
 `;
 
 const FormContainer = styled.div`
   text-align: left;
-  margin: auto;
+  margin: 0 auto;
   button {
     display: block;
     margin: 1rem auto;
@@ -26,10 +27,7 @@ const FormContainer = styled.div`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  input {
-    background-color: white;
-  }
-  select {
+  &:not(:last-child) {
     margin-bottom: 10px;
   }
   label {
@@ -53,9 +51,25 @@ const SimpleFormSheet = styled(InfoSheet)`
   border: 1px solid whitesmoke;
   max-width: 350px;
   margin: 0 auto;
-  input {
-    margin-bottom: 10px;
-  }
+`;
+
+const SimpleBtn = styled.button`
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 12px;
+`;
+
+const WhiteBtn = styled(SimpleBtn)`
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+`;
+
+const RedBtn = styled(SimpleBtn)`
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
 `;
 
 const styles = {
@@ -64,6 +78,9 @@ const styles = {
   InputContainer: InputContainer,
   ColumnForm: ColumnForm,
   SimpleFormSheet: SimpleFormSheet,
+  SimpleBtn: SimpleBtn,
+  WhiteBtn: WhiteBtn,
+  RedBtn: RedBtn,
   InfoSheet: InfoSheet
 };
 

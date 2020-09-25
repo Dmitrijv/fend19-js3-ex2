@@ -22,23 +22,39 @@ const CustomerSheet = styled(styles.InfoSheet)`
 `;
 
 const InfoSheetLine = styled.div`
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const ActionContainer = styled.div`
+  ${styles.ColumnForm};
+  align-items: center;
+  img {
+    margin: 0 0 0 5px;
+  }
+`;
+
+const Action = styled.div`
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
   width: 100%;
+  margin: 10px auto;
+  button {
+    font-size: 1rem;
+    height: 42px;
+    width: 100%;
+    cursor: pointer;
+  }
   @media only screen and (min-width: 800px) {
     max-width: 420px;
   }
-  margin: 0 auto;
-  img {
-    margin: 0 20px;
-    cursor: pointer;
-    height: 64px;
-    width: 64px;
-  }
+`;
+
+const ActionDescription = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid lightgray;
+  padding: 10px;
 `;
 
 export default function CustomerDetailsPage() {
@@ -110,18 +126,16 @@ export default function CustomerDetailsPage() {
               </InfoSheetLine>
             </CustomerSheet>
             <ActionContainer>
-              <img
-                src={edit64}
-                alt={`edit customer #${customer.id}`}
-                title={`edit customer #${customer.id}`}
-                onClick={() => history.push(`/edit-customer/${customer.id}`)}
-              />
-              <img
-                src={delete64}
-                alt={`delete customer #${customer.id}`}
-                title={`delete customer #${customer.id}`}
-                onClick={() => userKit.deleteCustomer(customer.id).then(() => history.push("/home"))}
-              />
+              <Action onClick={() => history.push(`/edit-customer/${customer.id}`)}>
+                <styles.WhiteBtn>edit customer #{customer.id}</styles.WhiteBtn>
+                <img src={edit64} alt={`edit customer #${customer.id}`} title={`edit customer #${customer.id}`} />
+              </Action>
+              <Action>
+                <styles.RedBtn onClick={() => userKit.deleteCustomer(customer.id).then(() => history.push("/home"))}>
+                  delete customer #{customer.id}
+                </styles.RedBtn>
+                <img src={delete64} alt={`delete customer #${customer.id}`} title={`delete customer #${customer.id}`} />
+              </Action>
             </ActionContainer>
           </styles.FlexContainer>
         )}
