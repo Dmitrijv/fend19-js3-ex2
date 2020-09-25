@@ -71,6 +71,15 @@ export default class {
     });
   }
 
+  async updateCustomer(id, payload) {
+    const url = `${ROOT_URL}api/v1/customers/${id}/ `;
+    return fetch(url, {
+      method: "PUT",
+      headers: this.getPrivateHeaders(),
+      body: JSON.stringify(payload)
+    });
+  }
+
   async deleteCustomer(id) {
     const url = `${ROOT_URL}api/v1/customers/${id}/ `;
     return fetch(url, {

@@ -33,15 +33,13 @@ export default function HomePage() {
   const [isUserAuthorized, setIsUserAuthorized] = useState(null);
 
   useEffect(() => {
-    // setIsUserAuthorized(true);
-    // if (!customerList) fetchCustomerList();
     checkIfAuthorized().then(isAuthorized => {
       if (isAuthorized === false) {
         setIsUserAuthorized(false);
         return;
       } else {
         setIsUserAuthorized(true);
-        if (!customerList) fetchCustomerList();
+        fetchCustomerList();
       }
     });
   }, []);
