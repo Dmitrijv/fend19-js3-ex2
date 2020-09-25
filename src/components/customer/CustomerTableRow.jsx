@@ -11,9 +11,9 @@ export default function CustomerTableRow({ customer, deleteCallback }) {
       <td>
         <Link to={`/customer/${customer.id}`}>{customer.id}</Link>
       </td>
-      <td>{customer.reference}</td>
       <td>{customer.name}</td>
       <td>{customer.organisationNr}</td>
+      <td>{customer.reference}</td>
       <td>
         <button onClick={() => navigateToEditPage(customer)}>&#128736; Edit</button>
       </td>

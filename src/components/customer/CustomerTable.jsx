@@ -44,9 +44,9 @@ export default function CustomerTable({ customerList }) {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Reference</th>
             <th>Name</th>
             <th>Organisation</th>
+            <th>Reference</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
