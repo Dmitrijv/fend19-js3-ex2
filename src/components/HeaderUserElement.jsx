@@ -34,7 +34,6 @@ export default function HeaderUserElement() {
   }
 
   useEffect(() => {
-    //console.log("updating active user");
     if (userKit.getToken()) {
       userKit
         .getActiveUser()
