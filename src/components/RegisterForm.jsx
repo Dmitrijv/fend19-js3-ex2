@@ -1,60 +1,101 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserKit from "../data/UserKit";
-import DropdownOption from "./DropdownOption";
 
 import styles from "./../styles/js/styles";
+import UserKit from "../data/UserKit";
+import { BusinessContext } from "./../contexts/BusinessContext";
+
+import InputField from "./InputField";
 
 const RegisterForm = () => {
   const userKit = new UserKit();
   const history = useHistory();
+
+  const { setEmailToVerify } = useContext(BusinessContext);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [organisationName, setOrganisationName] = useState("");
-  const [organisationKind, setOrganisationKind] = useState("");
 
-  const inputItemsArray = [
-    ["First Name", firstName, setFirstName],
-    ["Last Name", lastName, setLastName],
-    ["Email", email, setEmail],
-    ["Password", password, setPassword],
-    ["Organisation Name", organisationName, setOrganisationName]
-  ];
+  // for some reason defaultValue attribute in <select> tag doesn't work
+  const [organisationKind, setOrganisationKind] = useState("0");
 
   const organisationKinds = [
-    [0, "N/A"],
-    [1, "Auto Enterpreneur"],
-    [2, "SAS SARL"]
+    { id: "0", label: "0" },
+    { id: "1", label: "1" },
+    { id: "2", label: "2" }
   ];
 
-  function renderInput(index, placeholder, value, setValue) {
-    return (
-      <styles.InputContainer key={index}>
-        <label htmlFor={placeholder}>{placeholder}:</label>
-        <input placeholder={placeholder} id={placeholder} value={value} onChange={e => setValue(e.target.value)} />
-      </styles.InputContainer>
-    );
-  }
-
-  function renderDropdownInput(index, placeholder, optionList, setValue) {
-    return (
-      <styles.InputContainer key={index}>
-        <label htmlFor={placeholder}>{placeholder}:</label>
-        <select id={placeholder} name={placeholder} defaultValue={0} onChange={e => setValue(e.target.value)} required>
-          {optionList.map(([id, label]) => {
-            return <DropdownOption key={`dropdown-key-${id}`} orgId={id} orgLabel={label} />;
-          })}
-        </select>
-      </styles.InputContainer>
-    );
-  }
+  const newUserInputFields = [
+    {
+      label: "First Name",
+      showLabel: true,
+      value: firstName,
+      callback: setFirstName,
+      required: true,
+      minLength: 1,
+      maxLength: 30
+    },
+    {
+      label: "Last Name",
+      showLabel: true,
+      value: lastName,
+      callback: setLastName,
+      required: true,
+      minLength: 1,
+      maxLength: 30
+    },
+    {
+      label: "Email",
+      showLabel: true,
+      value: email,
+      callback: setEmail,
+      required: true,
+      type: "email",
+      minLength: 1,
+      maxLength: 254
+    },
+    {
+      label: "Password",
+      showLabel: true,
+      type: "password",
+      value: password,
+      callback: setPassword,
+      required: true,
+      minLength: 1
+    },
+    {
+      label: "Organisation Name",
+      showLabel: true,
+      required: true,
+      value: organisationName,
+      callback: setOrganisationName
+    },
+    {
+      label: "Organisation Kind",
+      showLabel: true,
+      required: true,
+      type: "select",
+      defaultValue: "0",
+      optionList: organisationKinds,
+      value: organisationKind,
+      callback: setOrganisationKind
+    }
+  ];
 
   function handleRegister(event) {
-    userKit.register(firstName, lastName, email, password, organisationName, organisationKind);
-    history.push("/verify");
+    console.log(organisationKind);
+    userKit.register(firstName, lastName, email, password, organisationName, organisationKind).then(response => {
+      console.log(response);
+      if (response.ok === true) {
+        setEmailToVerify(email);
+        history.push("/verify");
+      } else {
+        history.push("/register-fail");
+      }
+    });
     event.preventDefault();
   }
 
@@ -62,10 +103,9 @@ const RegisterForm = () => {
     <styles.SimpleFormSheet>
       <h2>Register New User</h2>
       <styles.ColumnForm onSubmit={handleRegister}>
-        {inputItemsArray.map(([placeholder, value, setValue], index) =>
-          renderInput(index, placeholder, value, setValue)
-        )}
-        {renderDropdownInput(inputItemsArray.length + 1, "Organisation Kind", organisationKinds, setOrganisationKind)}
+        {newUserInputFields.map((template, index) => (
+          <InputField template={template} key={`create-customer-field-${index}`} />
+        ))}
         <button type="submit">Register</button>
       </styles.ColumnForm>
     </styles.SimpleFormSheet>
