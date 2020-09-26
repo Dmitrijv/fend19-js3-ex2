@@ -58,12 +58,24 @@ const SimpleBtn = styled.button`
   border: 1px solid transparent;
   border-radius: 4px;
   padding: 6px 12px;
+  &:hover {
+    opacity: 0.9;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
 `;
 
 const WhiteBtn = styled(SimpleBtn)`
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+`;
+
+const GreenBtn = styled(SimpleBtn)`
+  color: #fff;
+  background-color: #4caf50;
+  border-color: #4caf50;
 `;
 
 const RedBtn = styled(SimpleBtn)`
@@ -80,6 +92,7 @@ const styles = {
   SimpleFormSheet: SimpleFormSheet,
   SimpleBtn: SimpleBtn,
   WhiteBtn: WhiteBtn,
+  GreenBtn: GreenBtn,
   RedBtn: RedBtn,
   InfoSheet: InfoSheet
 };
