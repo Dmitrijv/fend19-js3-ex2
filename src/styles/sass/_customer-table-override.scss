@@ -1,0 +1,29 @@
+table.customer-table {
+  width: 100%;
+  border-collapse: collapse;
+  thead,
+  thead tr {
+    color: white;
+    background-color: #85aa53;
+  }
+
+  tbody tr:hover {
+    background-color: white;
+  }
+
+  tbody td,
+  thead th {
+    padding: 5px 10px;
+  }
+
+  thead th {
+    text-align: left;
+  }
+
+  & tr {
+    @media only screen and (max-width: 40em) {
+      border: 1px solid lightgray;
+      margin-bottom: 10px;
+    }
+  }
+}
