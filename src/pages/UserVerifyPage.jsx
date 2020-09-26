@@ -1,7 +1,7 @@
 import React from "react";
 import GlobalLayout from "./layout/GlobalLayout";
 
-export default function Start() {
+export default function UserVerifyPage() {
   return (
     <GlobalLayout>
       <div className="white-card">
