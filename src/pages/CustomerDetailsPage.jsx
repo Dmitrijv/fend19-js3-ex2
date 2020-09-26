@@ -49,14 +49,6 @@ const Action = styled.div`
   }
 `;
 
-const ActionDescription = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  border: 1px solid lightgray;
-  padding: 10px;
-`;
-
 export default function CustomerDetailsPage() {
   const userKit = new UserKit();
   const history = useHistory();
