@@ -13,14 +13,13 @@ betyget Godkänt. För VG ska minst 2 utav VG-punkterna utföras.
 **Krav:**
 
 - :heavy_check_mark: React
-- JSXK
+- :heavy_check_mark: JSXK
 - :heavy_check_mark: React Router Dom
 - :heavy_check_mark: useState
 - :heavy_check_mark: useEffect
-- :trophy: VG useContext (spara kundlistan och inloggade användarens information i Context)
-- Styled Components
-- Skapa styled components
-- :trophy: VG Ärv CSS-properties från andra komponenter
+- :heavy_check_mark: :trophy: VG useContext (spara kundlistan och inloggade användarens information i Context)
+- :heavy_check_mark: Skapa styled components
+- :heavy_check_mark: :trophy: VG Ärv CSS-properties från andra komponenter
 
 ## API
 
