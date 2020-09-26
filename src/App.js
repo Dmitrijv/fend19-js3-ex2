@@ -18,6 +18,7 @@ function App() {
   const userKit = new UserKit();
 
   const [activeUser, setActiveUser] = useState(null);
+  const [emailToVerify, setEmailToVerify] = useState(null);
   const [customerList, setCustomerList] = useState(null);
 
   function fetchCustomerList() {
@@ -45,7 +46,15 @@ function App() {
   return (
     <div>
       <BusinessContext.Provider
-        value={{ activeUser, setActiveUser, customerList, fetchCustomerList, checkIfAuthorized }}
+        value={{
+          activeUser,
+          setActiveUser,
+          customerList,
+          fetchCustomerList,
+          checkIfAuthorized,
+          emailToVerify,
+          setEmailToVerify
+        }}
       >
         <Switch>
           <Route path="/edit-customer/:customerId" render={props => <EditCustomerPage {...props} />} />
