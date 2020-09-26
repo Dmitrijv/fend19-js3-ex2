@@ -86,9 +86,7 @@ const RegisterForm = () => {
   ];
 
   function handleRegister(event) {
-    console.log(organisationKind);
     userKit.register(firstName, lastName, email, password, organisationName, organisationKind).then(response => {
-      console.log(response);
       if (response.ok === true) {
         setEmailToVerify(email);
         history.push("/verify");

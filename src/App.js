@@ -14,6 +14,7 @@ import CustomerDetailsPage from "./pages/CustomerDetailsPage";
 import EditCustomerPage from "./pages/EditCustomerPage";
 import UnauthorizedErrorPage from "./pages/errors/UnauthorizedErrorPage";
 import RegistrationFailedErrorPage from "./pages/errors/RegistrationFailedErrorPage";
+import ActivationFailedErrorPage from "./pages/errors/ActivationFailedErrorPage";
 
 function App() {
   const userKit = new UserKit();
@@ -66,6 +67,7 @@ function App() {
           <Route path="/home" exact component={HomePage} />
           <Route path="/" exact component={StartPage} />
           <Route path="/register-fail" exact component={RegistrationFailedErrorPage} />
+          <Route path="/activation-fail" exact component={ActivationFailedErrorPage} />
           <Route path="*" exact component={UnauthorizedErrorPage} />
         </Switch>
       </BusinessContext.Provider>

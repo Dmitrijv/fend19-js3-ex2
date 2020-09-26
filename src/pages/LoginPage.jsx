@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
@@ -23,21 +23,30 @@ export default function LoginPage() {
   const userKit = new UserKit();
   const history = useHistory();
 
-  function handleActivateAccount() {
-    userKit.activateUser(uid, token).then(() => {
-      history.push("/active");
-    });
-  }
-
   const params = new URLSearchParams(history.location.search);
-  const uid = params.get("uid");
-  const token = params.get("token");
-  // if we have been navigated to this page through an account activation link, handle that proccess
-  if (uid && token) handleActivateAccount();
+  const [uid, setUid] = useState(params.get("uid"));
+  const [token, setToken] = useState(params.get("token"));
 
   const { setActiveUser } = useContext(BusinessContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function handleActivateAccount() {
+    userKit.activateUser(uid, token).then(response => {
+      if (response.ok === true) {
+        setUid(null);
+        setToken(null);
+        history.push("/active");
+      } else {
+        history.push("/activation-fail");
+      }
+    });
+  }
+
+  useEffect(() => {
+    // if we have been navigated to this page through an account activation link, handle that proccess
+    if (uid && token) handleActivateAccount();
+  }, []);
 
   function updateActiveUser() {
     userKit
