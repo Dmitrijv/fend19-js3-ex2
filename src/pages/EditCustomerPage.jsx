@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import GlobalLayout from "./layout/GlobalLayout";
 
-import styled from "styled-components";
 import styles from "../styles/js/styles";
 
 import UserKit from "../data/UserKit";
