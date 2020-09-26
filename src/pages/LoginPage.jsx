@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 import UserKit from "./../data/UserKit";
 import { BusinessContext } from "./../contexts/BusinessContext";
-import styles from "./../styles/js/styles";
 
 import GlobalLayout from "./layout/GlobalLayout";
 
