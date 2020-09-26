@@ -6,17 +6,28 @@ import { BusinessContext } from "./../contexts/BusinessContext";
 
 const UserProfileContainer = styled.div`
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  justify-content: flex-end;
   padding: 0px 10px;
+
+  & > *:not(:last-child) {
+    margin-bottom: 6px;
+  }
+
+  @media only screen and (min-width: 800px) {
+    flex-direction: row;
+    & > *:not(:last-child) {
+      margin-right: 6px;
+    }
+  }
+
   a:hover {
     text-decoration: underline;
   }
+
   a {
     font-size: 16px;
     font-weight: bold;
-  }
-  *:not(:last-child) {
-    margin-right: 6px;
   }
 `;
 
