@@ -54,7 +54,9 @@ export default function CustomerTable({ customerList }) {
         <tbody>
           {customerList.map(function(customer, index) {
             const deleteCallback = () => {
-              userKit.deleteCustomer(customer.id).then(() => fetchCustomerList());
+              if (window.confirm(`Delete customer #${customer.id}?`) === true) {
+                userKit.deleteCustomer(customer.id).then(() => fetchCustomerList());
+              }
             };
             return <CustomerTableRow key={`cstmr-row-${index}`} customer={customer} deleteCallback={deleteCallback} />;
           })}
