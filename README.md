@@ -104,6 +104,10 @@ Visa följande information på Detaljvy för en specifik kund:
 Användaren ska därefter navigera tillbaka till "Hemskärmen"  
 :trophy: VG Ge användaren möjlighet att ändra kundens information PUT/PATCH
 
+### Npm packages
+
+- react-super-responsive-table: https://www.npmjs.com/package/react-super-responsive-table
+
 ### Inlämning
 
 Uppgiften lämnas in genom att ladda upp koden (utan node_modules) på studentportalen samt i inlämningen klistra in länk
