@@ -14,12 +14,6 @@ export default function CustomerTableRow({ customer, deleteCallback }) {
       <td>{customer.name}</td>
       <td>{customer.organisationNr}</td>
       <td>{customer.reference}</td>
-      <td>
-        <button onClick={() => navigateToEditPage(customer)}>&#128736; Edit</button>
-      </td>
-      <td>
-        <button onClick={deleteCallback}>&#x1F5D1; Delete</button>
-      </td>
     </tr>
   );
 }

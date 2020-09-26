@@ -47,8 +47,6 @@ export default function CustomerTable({ customerList }) {
             <th>Name</th>
             <th>Organisation</th>
             <th>Reference</th>
-            <th>Edit</th>
-            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
