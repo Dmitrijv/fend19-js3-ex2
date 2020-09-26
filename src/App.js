@@ -76,8 +76,3 @@ function App() {
 }
 
 export default App;
-
-/*
-email: nackademin@willandskill.se
-password: js-fend-19
-*/
