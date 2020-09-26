@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import styles from "../../styles/js/styles";
-import UserKit from "./../../data/UserKit";
 import CustomerTableRow from "./CustomerTableRow";
-
-import { BusinessContext } from "./../../contexts/BusinessContext";
+import { Table, Thead, Tbody, Tr, Th } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 const CustomerSheet = styled(styles.InfoSheet)`
   width: 100%;
@@ -35,31 +34,24 @@ const CustomerTableTag = styled.table`
 `;
 
 export default function CustomerTable({ customerList }) {
-  const userKit = new UserKit();
-  const { fetchCustomerList } = useContext(BusinessContext);
   return (
     <CustomerSheet>
       <h2>{customerList.length} customer(s) on record</h2>
-      <CustomerTableTag>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Organisation</th>
-            <th>Reference</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>ID</Th>
+            <Th>Name</Th>
+            <Th>Organisation</Th>
+            <Th>Reference</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
           {customerList.map(function(customer, index) {
-            const deleteCallback = () => {
-              if (window.confirm(`Delete customer #${customer.id}?`) === true) {
-                userKit.deleteCustomer(customer.id).then(() => fetchCustomerList());
-              }
-            };
-            return <CustomerTableRow key={`cstmr-row-${index}`} customer={customer} deleteCallback={deleteCallback} />;
+            return <CustomerTableRow key={`cstmr-row-${index}`} customer={customer} />;
           })}
-        </tbody>
-      </CustomerTableTag>
+        </Tbody>
+      </Table>
     </CustomerSheet>
   );
 }

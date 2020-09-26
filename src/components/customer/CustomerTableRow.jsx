@@ -1,19 +1,17 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function CustomerTableRow({ customer, deleteCallback }) {
-  const history = useHistory();
-  function navigateToEditPage(customer) {
-    history.push(`/edit-customer/${customer.id}`);
-  }
+import { Tr, Td } from "react-super-responsive-table";
+
+export default function CustomerTableRow({ customer }) {
   return (
-    <tr>
-      <td>
+    <Tr>
+      <Td>
         <Link to={`/customer/${customer.id}`}>{customer.id}</Link>
-      </td>
-      <td>{customer.name}</td>
-      <td>{customer.organisationNr}</td>
-      <td>{customer.reference}</td>
-    </tr>
+      </Td>
+      <Td>{customer.name}</Td>
+      <Td>{customer.organisationNr}</Td>
+      <Td>{customer.reference}</Td>
+    </Tr>
   );
 }
