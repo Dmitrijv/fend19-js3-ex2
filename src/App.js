@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.scss";
-// import "./styles/css/tailwind.min.css";
 
 import UserKit from "./data/UserKit";
 import { BusinessContext } from "./contexts/BusinessContext";
