@@ -35,6 +35,16 @@ const InputContainer = styled.div`
   }
 `;
 
+const WhiteCard = styled.div`
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+`;
+
 const InfoSheet = styled.div`
   padding: 15px;
   background-color: #fafafa;
@@ -85,6 +95,7 @@ const RedBtn = styled(SimpleBtn)`
 `;
 
 const styles = {
+  WhiteCard: WhiteCard,
   FlexContainer: FlexContainer,
   FormContainer: FormContainer,
   InputContainer: InputContainer,
