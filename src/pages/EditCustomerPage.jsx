@@ -14,7 +14,7 @@ export default function EditCustomerPage() {
   const history = useHistory();
 
   const { customerId } = useParams();
-  const { customerList, checkIfAuthorized } = useContext(BusinessContext);
+  const { checkIfAuthorized } = useContext(BusinessContext);
 
   const [isUserAuthorized, setIsUserAuthorized] = useState(null);
   const [customer, setCustomer] = useState(null);
@@ -89,21 +89,14 @@ export default function EditCustomerPage() {
         return;
       } else {
         setIsUserAuthorized(true);
-        const localData = customerList ? customerList.find(cstm => cstm.id === Number(customerId)) : null;
-        // use customer data from the local customer list if possible
-        if (localData) {
-          fillInInputFields(localData);
-          setCustomer(localData);
-        } else {
-          // otherwise fetch data from the api
-          userKit
-            .getCustomerById(customerId)
-            .then(res => res.json())
-            .then(response => {
-              setCustomer(response);
-              fillInInputFields(response);
-            });
-        }
+        // fetch latest customer data from the api
+        userKit
+          .getCustomerById(customerId)
+          .then(res => res.json())
+          .then(response => {
+            setCustomer(response);
+            fillInInputFields(response);
+          });
       }
     });
   }, []);
