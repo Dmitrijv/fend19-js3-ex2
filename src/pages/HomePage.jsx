@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
-import UserKit from "./../data/UserKit";
 import { BusinessContext } from "./../contexts/BusinessContext";
 
 import GlobalLayout from "./layout/GlobalLayout";
