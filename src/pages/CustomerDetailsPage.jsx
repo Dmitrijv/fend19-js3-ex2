@@ -67,6 +67,16 @@ export default function CustomerDetailsPage() {
   const [isUserAuthorized, setIsUserAuthorized] = useState(null);
   const [customer, setCustomer] = useState(null);
 
+  function handleEditCustomer() {
+    history.push(`/edit-customer/${customer.id}`);
+  }
+
+  function handleDeleteCustomer() {
+    if (window.confirm(`Delete customer #${customer.id}?`) === true) {
+      userKit.deleteCustomer(customer.id).then(() => history.push("/home"));
+    }
+  }
+
   useEffect(() => {
     checkIfAuthorized().then(isAuthorized => {
       if (isAuthorized === false) {
@@ -126,14 +136,12 @@ export default function CustomerDetailsPage() {
               </InfoSheetLine>
             </CustomerSheet>
             <ActionContainer>
-              <Action onClick={() => history.push(`/edit-customer/${customer.id}`)}>
-                <styles.WhiteBtn>edit customer #{customer.id}</styles.WhiteBtn>
+              <Action>
+                <styles.GreenBtn onClick={handleEditCustomer}>edit customer #{customer.id}</styles.GreenBtn>
                 <img src={edit64} alt={`edit customer #${customer.id}`} title={`edit customer #${customer.id}`} />
               </Action>
               <Action>
-                <styles.RedBtn onClick={() => userKit.deleteCustomer(customer.id).then(() => history.push("/home"))}>
-                  delete customer #{customer.id}
-                </styles.RedBtn>
+                <styles.RedBtn onClick={handleDeleteCustomer}>delete customer #{customer.id}</styles.RedBtn>
                 <img src={delete64} alt={`delete customer #${customer.id}`} title={`delete customer #${customer.id}`} />
               </Action>
             </ActionContainer>
