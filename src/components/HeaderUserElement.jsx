@@ -11,13 +11,13 @@ const UserProfileContainer = styled.div`
   padding: 0px 10px;
 
   & > *:not(:last-child) {
-    margin-bottom: 6px;
+    margin: 0 0 6px 0;
   }
 
   @media only screen and (min-width: 800px) {
     flex-direction: row;
     & > *:not(:last-child) {
-      margin-right: 6px;
+      margin: 0 6px 0 0;
     }
   }
 
