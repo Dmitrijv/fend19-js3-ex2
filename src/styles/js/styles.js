@@ -73,6 +73,8 @@ const SimpleBtn = styled.button`
   border: 1px solid transparent;
   border-radius: 4px;
   padding: 6px 12px;
+  font-style: olbique;
+  font-weight: bold;
   &:hover {
     opacity: 0.9;
   }
