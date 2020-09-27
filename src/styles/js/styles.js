@@ -63,6 +63,11 @@ const SimpleFormSheet = styled(InfoSheet)`
   margin: 0 auto;
 `;
 
+const ErrorMessage = styled.p`
+  font-weight: bold;
+  color: red;
+`;
+
 const SimpleBtn = styled.button`
   text-align: center;
   border: 1px solid transparent;
@@ -101,6 +106,7 @@ const styles = {
   InputContainer: InputContainer,
   ColumnForm: ColumnForm,
   SimpleFormSheet: SimpleFormSheet,
+  ErrorMessage: ErrorMessage,
   SimpleBtn: SimpleBtn,
   WhiteBtn: WhiteBtn,
   GreenBtn: GreenBtn,

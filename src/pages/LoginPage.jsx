@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+
 import styled from "styled-components";
+import styles from "../styles/js/styles";
 
 import UserKit from "./../data/UserKit";
 import { BusinessContext } from "./../contexts/BusinessContext";
@@ -25,6 +27,7 @@ export default function LoginPage() {
   const params = new URLSearchParams(history.location.search);
   const [uid, setUid] = useState(params.get("uid"));
   const [token, setToken] = useState(params.get("token"));
+  const [loginErrorMessage, setLoginErrorMessage] = useState(null);
 
   const { setActiveUser } = useContext(BusinessContext);
   const [email, setEmail] = useState("");
@@ -57,13 +60,18 @@ export default function LoginPage() {
   function handleLogin(event) {
     userKit
       .login(email, password)
-      .then(res => res.json())
+      .then(response => {
+        if (!response.ok) throw Error(response.statusText);
+        return response.json();
+      })
       .then(data => {
+        setLoginErrorMessage(null);
         userKit.setToken(data.token);
         updateActiveUser();
-      })
-      .then(() => {
         history.push("/home");
+      })
+      .catch(error => {
+        setLoginErrorMessage("Login failed. Check credentials.");
       });
     event.preventDefault();
   }
@@ -75,6 +83,9 @@ export default function LoginPage() {
         <div className="white-card">
           <FlexForm onSubmit={handleLogin}>
             <h2>Sign In</h2>
+            {loginErrorMessage && (
+              <styles.ErrorMessage id="login-error-message">{loginErrorMessage}</styles.ErrorMessage>
+            )}
             <input placeholder="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
             <input
               placeholder="password"
