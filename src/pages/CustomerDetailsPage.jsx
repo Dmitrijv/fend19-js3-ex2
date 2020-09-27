@@ -22,6 +22,7 @@ const CustomerSheet = styled(styles.InfoSheet)`
 `;
 
 const InfoSheetLine = styled.div`
+  padding-top: 15px;
   font-size: 1rem;
 `;
 
@@ -115,7 +116,7 @@ export default function CustomerDetailsPage() {
                 <strong>Reference: </strong> {customer.reference || ""}
               </InfoSheetLine>
               <InfoSheetLine>
-                <strong>Organisation nr: </strong> {customer.organisationNr || ""}
+                <strong>Organisation: </strong> {customer.organisationNr || ""}
               </InfoSheetLine>
               <InfoSheetLine>
                 <strong>Vat nr: </strong> {customer.vatNr || ""}
