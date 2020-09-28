@@ -79,9 +79,9 @@ In order to use the system you need to register an account. Registration form ca
 
 ### Activating your account
 
-![active](readme/active.png)
-
 If registration process succeeds user is asked to verify their new account by following an activation link that is sent to their email adress.
+
+![active](readme/active.png)
 
 ### Error handling
 
