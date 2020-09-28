@@ -85,8 +85,6 @@ If registration process succeeds user is asked to verify their new account by fo
 
 ### Error handling
 
-![error](readme/error.png)
-
 If account registration or activation is rejected by the server user is redirected to a relevant error page. This might happen if you attempt to register with an email adress that has already been used or attempt to use an expired activation link.
 
 ## Logging in to the system
