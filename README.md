@@ -75,13 +75,9 @@ const CustomerSheet = styled(styles.InfoSheet)`
 
 In order to use the system you need to register an account. Registration form can be found at the root link of the application (`/`). From there it is also possible to navigate to login page if you already have an account. Input field properties are set up to conform to API requirements for a new user.
 
-![registration](readme/registration.png)
-
 ### Activating your account
 
 If registration process succeeds user is asked to verify their new account by following an activation link that is sent to their email adress.
-
-![active](readme/active.png)
 
 ### Error handling
 
