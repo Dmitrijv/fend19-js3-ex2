@@ -127,6 +127,8 @@ If you click on the id of any customer you will be redirected to a "customer det
 
 ## Project Dependencies
 
+- react-router-dom
+- styled-component
 - [react-super-responsive-table](https://www.npmjs.com/package/react-super-responsive-table)
 
 ## Key
