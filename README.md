@@ -83,6 +83,8 @@ In order to use the system you need to register an account. Registration form ca
 
 If registration process succeeds user is asked to verify their new account by following an activation link that is sent to their email adress.
 
+![active](readme/active.png)
+
 ### Error handling
 
 If account registration or activation is rejected by the server user is redirected to a relevant error page. This might happen if you attempt to register with an email adress that has already been used or attempt to use an expired activation link.
