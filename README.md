@@ -1,6 +1,6 @@
 # FEND19 - JavaScript 3 - Inlämingsuppgift 2
 
-![preview](readme/js3-ex2-home.png)
+![preview](readme/js3-ex2-home2.png)
 
 ## Dependencies
 
