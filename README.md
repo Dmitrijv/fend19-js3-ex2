@@ -117,7 +117,7 @@ If you click on the id of any customer you will be redirected to a "customer det
 ![customer](readme/customer.png)
 
 :trophy: From this page it is also possible to change information about the customer as well as delete this customer record entirely.  
-:trophy: Deleting or updating a customer will redirect you back to the `/home` page where a new list of customers will be loaded from the api to reflect any changes you have made.
+:trophy: Deleting or updating a customer will redirect you back to the `/home` page where a new list of customers will be loaded from the API to reflect any changes you have made.
 
 ## Project Dependencies
 
