@@ -2,7 +2,7 @@
 
 ![preview](readme/js3-ex2-home2.png)
 
-In this excercise I developed a React application for managing customer accounts using an API provided by the course instructor.
+In this excercise I developed a React application for managing business customers using an API provided by the course instructor.
 Navigation between different pages within the application is done using [react-router-dom](https://reactrouter.com/) routing library.
 User-specific functions for interacting with the api are collected in JSX Kit called [UserKit](src/data/UserKit.js). Dynamic parts of the application are updated using `useState` and `useEffect` React hooks.
 
