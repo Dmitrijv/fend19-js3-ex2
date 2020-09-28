@@ -73,9 +73,9 @@ const CustomerSheet = styled(styles.InfoSheet)`
 
 ## Creating a new account
 
-![registration](readme/registration.png)
-
 In order to use the system you need to register an account. Registration form can be found at the root link of the application (`/`). From there it is also possible to navigate to login page if you already have an account. Input field properties are set up to conform to API requirements for a new user.
+
+![registration](readme/registration.png)
 
 ### Activating your account
 
