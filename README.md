@@ -31,7 +31,7 @@ All styling for this project was written from scratch.
 
 There is one exception to this with **react-super-responsive-table** npm package which requires it's own basic style sheet to be loaded in order for the project to compile. To enforce my own styling on the customer table I created an override scss file that is loaded immediately after the dependency:
 
-from [CustomerTable.jsx](https://github.com/Dmitrijv/fend19-js3-ex2/blob/4d2d2d71509294881a348d4e472f06200eecc32f/src/components/customer/CustomerTable.jsx#L8):
+See [CustomerTable.jsx](https://github.com/Dmitrijv/fend19-js3-ex2/blob/4d2d2d71509294881a348d4e472f06200eecc32f/src/components/customer/CustomerTable.jsx#L8)
 
 ```js
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
